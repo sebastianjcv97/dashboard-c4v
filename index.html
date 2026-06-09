@@ -147,6 +147,22 @@
   .mm-item{fill:rgba(255,255,255,.9);font-size:10.5px}
   .mm-edge{stroke-width:1.8;fill:none}
   .mm-elbl{font-size:9.5px;font-weight:700}
+  /* Buyer persona */
+  .personas{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .pers{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--c,var(--red));border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:11px}
+  .pers-h{display:flex;align-items:center;gap:12px}
+  .pers-av{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:25px;background:var(--panel2);border:2px solid var(--c,#666);flex:0 0 auto}
+  .pers-h .nm{font-size:16px;font-weight:800;line-height:1.1}
+  .pers-h .arq{font-size:10.5px;color:var(--c,#fff);font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+  .pers-meta{font-size:12px;color:var(--mut);line-height:1.4}
+  .pers-q{font-style:italic;font-size:12.5px;color:#fff;background:rgba(255,255,255,.04);border-left:3px solid var(--c,var(--red));border-radius:8px;padding:8px 11px}
+  .pblock{font-size:12px}
+  .pblock .pl{display:block;font-size:9.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--mut);margin-bottom:3px;font-weight:700}
+  .pblock ul{margin:0;padding-left:16px;line-height:1.5;color:rgba(255,255,255,.85)}
+  .ptags{display:flex;gap:5px;flex-wrap:wrap}
+  .ptag{font-size:10.5px;background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:2px 8px;color:rgba(255,255,255,.82)}
+  .pers .pwin{font-size:11.5px;background:rgba(249,2,11,.08);border:1px solid rgba(249,2,11,.28);border-radius:9px;padding:8px 10px;color:#ffd2cf}
+  .pers .pwin b{color:var(--red2)}
 
   /* Service Blueprint */
   .bp-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
@@ -190,6 +206,7 @@
   <button data-s="proyectos">Proyectos</button>
   <button data-s="estrategia">Estrategia</button>
   <button data-s="org">Organigrama</button>
+  <button data-s="personas">Buyer persona</button>
   <button data-s="journey">Journey · general</button>
   <button data-s="detalle">Journey · detallado</button>
   <button data-s="blueprint">Service Blueprint</button>
@@ -390,6 +407,61 @@
       <div class="mini"><b>Legal</b><span>asesoría</span></div>
       <div class="mini"><b>Contable</b><span>asesoría</span></div>
     </div>
+  </section>
+
+  <!-- BUYER PERSONA -->
+  <section id="personas">
+    <h2>Buyer <span class="em">persona</span> — a quién le vendemos</h2>
+    <p class="sub">Tres perfiles representativos del cliente de C4V (arquetipos para orientar marketing y ventas — no son personas reales). Sirven para hablarle a cada uno en su idioma y, para Martin, para ver <b>dónde la tecnología acelera la venta</b> de cada perfil.</p>
+    <div class="personas">
+
+      <div class="pers" style="--c:#ff8f6b">
+        <div class="pers-h">
+          <div class="pers-av">👩🏻‍💻</div>
+          <div><div class="nm">Daniela</div><div class="arq">La emprendedora que arranca</div></div>
+        </div>
+        <div class="pers-meta">28 años · Lima / provincia · independiente (diseño, ventas por redes). Busca un ingreso extra desde casa.</div>
+        <div class="pers-q">"¿Es difícil de usar? Nunca he manejado una máquina así… y me da miedo quemar el material."</div>
+        <div class="pblock"><span class="pl">Qué quiere lograr</span><ul><li>Emprender desde casa con poca inversión.</li><li>Hacer souvenirs, llaveros y cajas en MDF/acrílico para vender en redes y ferias.</li><li>Aprender rápido y sin tecnicismos.</li></ul></div>
+        <div class="pblock"><span class="pl">Dolores y objeciones</span><ul><li>"¿Y si no sé usarla / la malogro?"</li><li>Presupuesto justo → busca facilidades de pago.</li><li>Miedo a la estafa: "¿existe la empresa de verdad?"</li><li>"¿Habrá quién me ayude después de comprar?"</li></ul></div>
+        <div class="pblock"><span class="pl">Qué la convence</span><ul><li>Testimonios y videos reales cortando.</li><li>Garantía clara + capacitación incluida.</li><li>Tecnología "Cero Quemado" y línea Pro IA (operar desde el celu).</li><li>Comunidad y acompañamiento (coaching de Irene).</li></ul></div>
+        <div class="pblock"><span class="pl">Dónde está</span><div class="ptags"><span class="ptag">TikTok</span><span class="ptag">Instagram</span><span class="ptag">WhatsApp</span></div></div>
+        <div class="pblock"><span class="pl">Producto · ticket</span><div class="pers-meta">CO2 de entrada/intermedia (6040 / 9060), idealmente Pro IA · <b>ticket bajo-medio</b></div></div>
+        <div class="pwin">🤖 <b>Tecnología que ayuda:</b> bot de captura + respuesta &lt;5 min, follow-up automático, CeVi para resolver dudas de uso.</div>
+      </div>
+
+      <div class="pers" style="--c:#3aa0ff">
+        <div class="pers-h">
+          <div class="pers-av">👨🏽‍🔧</div>
+          <div><div class="nm">Marco</div><div class="arq">El taller que quiere producir más</div></div>
+        </div>
+        <div class="pers-meta">42 años · Arequipa / Lima · dueño de taller de publicidad, MDF y regalos corporativos. Ya factura, quiere escalar.</div>
+        <div class="pers-q">"Si se me para la máquina un día, pierdo pedidos. ¿Qué tan rápido es su soporte y hay repuestos?"</div>
+        <div class="pblock"><span class="pl">Qué quiere lograr</span><ul><li>Producir en casa y dejar de tercerizar cortes.</li><li>Más volumen y mejores márgenes.</li><li>Cumplir pedidos grandes a tiempo.</li></ul></div>
+        <div class="pblock"><span class="pl">Dolores y objeciones</span><ul><li>Tiempos muertos por fallas = plata perdida.</li><li>Repuestos que no llegan / soporte lento.</li><li>Máquinas que "queman" o pierden precisión.</li><li>Quiere saber el retorno (payback) antes de invertir.</li></ul></div>
+        <div class="pblock"><span class="pl">Qué lo convence</span><ul><li>Durabilidad y soporte técnico rápido.</li><li>Repuestos disponibles localmente.</li><li>Casos de otros talleres que escalaron.</li><li>Doble cabezal / Pro IA para producción.</li></ul></div>
+        <div class="pblock"><span class="pl">Dónde está</span><div class="ptags"><span class="ptag">WhatsApp</span><span class="ptag">Facebook</span><span class="ptag">Google</span><span class="ptag">Referidos</span></div></div>
+        <div class="pblock"><span class="pl">Producto · ticket</span><div class="pers-meta">CO2 grande / doble cabezal / Pro IA · <b>ticket medio-alto</b></div></div>
+        <div class="pwin">🤖 <b>Tecnología que ayuda:</b> Coordinador de Soporte (respuesta y escalado sin que se pierda), cotizador rápido, CeVi para soporte L1.</div>
+      </div>
+
+      <div class="pers" style="--c:#2bbf7a">
+        <div class="pers-h">
+          <div class="pers-av">🏭</div>
+          <div><div class="nm">Renato</div><div class="arq">El que corta metal (fibra)</div></div>
+        </div>
+        <div class="pers-meta">38 años · Trujillo / Lima · metalmecánica, joyería o señalética en acero. Necesita lo que el CO2 no da.</div>
+        <div class="pers-q">"Necesito ver que corte mi pieza de acero antes de invertir. ¿Qué potencia y qué fuente trae?"</div>
+        <div class="pblock"><span class="pl">Qué quiere lograr</span><ul><li>Cortar y grabar metal (acero, aluminio) con precisión.</li><li>Acabado profesional para clientes industriales.</li><li>Escalar a contratos más grandes.</li></ul></div>
+        <div class="pblock"><span class="pl">Dolores y objeciones</span><ul><li>Inversión alta → quiere seguridad total.</li><li>Exige specs claras (potencia, fuente, precisión).</li><li>Necesita respaldo de ingeniería serio, no solo venta.</li><li>Desconfía de marcas improvisadas.</li></ul></div>
+        <div class="pblock"><span class="pl">Qué lo convence</span><ul><li>Demostración con SU propio material.</li><li>Ficha técnica clara y marca seria (RUIDA / RECI).</li><li>Equipo de ingenieros y soporte post-venta.</li><li>Referencias del rubro industrial.</li></ul></div>
+        <div class="pblock"><span class="pl">Dónde está</span><div class="ptags"><span class="ptag">Google</span><span class="ptag">Ferias</span><span class="ptag">LinkedIn</span><span class="ptag">Referidos</span></div></div>
+        <div class="pblock"><span class="pl">Producto · ticket</span><div class="pers-meta">Láser de fibra / alta potencia · <b>ticket alto</b></div></div>
+        <div class="pwin">🤖 <b>Tecnología que ayuda:</b> ficha técnica/cotización al instante, agenda de demo automática, verificación de pago (Toby) en compras grandes.</div>
+      </div>
+
+    </div>
+    <div class="note">Para Martin: cada perfil entra por un canal distinto y tiene un freno distinto (miedo a usarla · tiempos muertos · seguridad de la inversión). Las automatizaciones de la pestaña "Dónde automatizar" atacan justo esos frenos.</div>
   </section>
 
   <!-- JOURNEY GENERAL -->
