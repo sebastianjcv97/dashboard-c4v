@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>C4V Láser — Cómo funciona la empresa · Onboarding Dirección</title>
+<style>
+  :root{
+    --red:#F9020B; --red2:#FF3B36; --reddeep:#9E0008;
+    --bg:#0f0f0f; --panel:#1b1b1b; --panel2:#232323; --line:rgba(255,255,255,.10);
+    --txt:#fff; --mut:rgba(255,255,255,.58); --gold:#E0B978;
+    --ok:#2bbf7a; --warn:#f0b429; --crit:#ff5a52;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",sans-serif;background:#0c0c0c;color:var(--txt);line-height:1.5}
+  .bgwrap{position:fixed;inset:0;z-index:-1;background:
+    radial-gradient(55% 40% at 50% 0%,rgba(249,2,11,.16),transparent 60%),
+    linear-gradient(180deg,#161616,#0c0c0c 70%)}
+  header{max-width:1120px;margin:0 auto;padding:26px 24px 6px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  .brand{font-size:20px;font-weight:800;letter-spacing:-.3px}
+  .brand b{color:var(--red)}
+  .brand span{color:var(--mut);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:2px}
+  .who{font-size:12px;color:var(--mut);text-align:right}
+  .who b{color:var(--gold)}
+  nav{max-width:1120px;margin:14px auto 0;padding:0 24px;display:flex;gap:8px;flex-wrap:wrap}
+  nav button{background:var(--panel);border:1px solid var(--line);color:var(--mut);padding:9px 15px;border-radius:999px;font:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:.2s}
+  nav button:hover{color:#fff}
+  nav button.active{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 6px 16px rgba(249,2,11,.3)}
+  main{max-width:1120px;margin:0 auto;padding:22px 24px 70px}
+  section{display:none;animation:fade .35s ease}
+  section.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+  h2{font-size:24px;font-weight:800;margin-bottom:4px}
+  h2 .em{color:var(--red)}
+  .sub{color:var(--mut);font-size:14px;margin-bottom:22px;max-width:760px}
+  .grid{display:grid;gap:14px}
+  .kpis{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
+  .kpi .n{font-size:28px;font-weight:800;color:var(--red2)}
+  .kpi .l{font-size:12px;color:var(--mut);margin-top:2px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
+  .card h3{font-size:15px;font-weight:700;margin-bottom:8px}
+  .card.red{border-left:3px solid var(--red)}
+  .muted{color:var(--mut);font-size:13px}
+  .tag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:3px 8px;border-radius:999px;margin-left:6px;vertical-align:middle}
+  .t-new{background:rgba(249,2,11,.18);color:var(--red2);border:1px solid rgba(249,2,11,.45)}
+  .t-ok{background:rgba(43,191,122,.15);color:var(--ok);border:1px solid rgba(43,191,122,.4)}
+  .t-warn{background:rgba(240,180,41,.15);color:var(--warn);border:1px solid rgba(240,180,41,.4)}
+  .t-crit{background:rgba(255,90,82,.15);color:var(--crit);border:1px solid rgba(255,90,82,.45)}
+
+  /* Organigrama */
+  .org-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:14px}
+  .person{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 16px;min-width:150px;text-align:center}
+  .person.dir{border-color:rgba(249,2,11,.5);background:linear-gradient(180deg,rgba(249,2,11,.08),var(--panel))}
+  .person .nm{font-weight:700;font-size:14px}
+  .person .ro{font-size:11px;color:var(--mut);margin-top:2px}
+  .branch-title{text-align:center;font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin:20px 0 8px}
+  .teamrow{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .mini{background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:8px 12px;font-size:12px;min-width:120px;text-align:center}
+  .mini b{display:block;font-size:13px}
+  .mini span{color:var(--mut);font-size:11px}
+
+  /* Empresas */
+  .ecos{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  .co{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px}
+  .co .cn{font-weight:700;font-size:14px}
+  .co .cc{font-size:12px;color:var(--mut);margin-top:3px}
+  .co .flag{font-size:11px;color:var(--gold)}
+
+  /* Journey */
+  .journey{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:10px}
+  .stage{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;position:relative}
+  .stage .step{font-size:11px;color:var(--red2);font-weight:800;letter-spacing:1px}
+  .stage .sn{font-size:15px;font-weight:700;margin:2px 0 8px}
+  .stage .row{font-size:12px;margin:5px 0}
+  .stage .k{color:var(--mut)}
+  .stage .auto{margin-top:9px;font-size:11.5px;background:rgba(249,2,11,.10);border:1px solid rgba(249,2,11,.3);border-radius:9px;padding:7px 9px;color:#ffd2cf}
+  .stage .auto b{color:var(--red2)}
+
+  /* Flujos */
+  .flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:10px 0}
+  .fstep{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:12.5px}
+  .arrow{color:var(--red);font-weight:800}
+
+  /* Tabla automatización */
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+  th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--mut);font-weight:700}
+  tr:hover td{background:rgba(255,255,255,.02)}
+  .prio{font-weight:800}
+  footer{max-width:1120px;margin:0 auto;padding:0 24px 40px;color:rgba(255,255,255,.35);font-size:12px;text-align:center}
+  .note{background:rgba(224,185,120,.08);border:1px solid rgba(224,185,120,.3);border-radius:12px;padding:12px 14px;font-size:13px;color:#f0e3c8;margin:14px 0}
+  .stagenav{display:flex;gap:7px;flex-wrap:wrap}
+  .stagenav button{background:var(--panel);border:1px solid var(--line);color:var(--mut);padding:7px 13px;border-radius:999px;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer;transition:.2s}
+  .stagenav button:hover{color:#fff}
+  .stagenav button.on{background:var(--red);border-color:var(--red);color:#fff}
+  td.op{color:#ffd2cf}
+  /* Flujo en línea (journey + proceso) */
+  .jflow{display:flex;gap:0;overflow-x:auto;padding-bottom:12px;align-items:stretch}
+  .jflow .stage{flex:0 0 215px;min-width:215px}
+  .jarrow{display:flex;align-items:center;color:var(--red);font-weight:800;font-size:24px;padding:0 9px;flex:0 0 auto}
+  /* Customer Journey Map horizontal (estilo plantilla) */
+  .cjm-cols{display:flex}
+  .cjm-col{flex:0 0 160px;width:160px;border-right:1px solid var(--line)}
+  .cjm-col:first-child{border-left:1px solid var(--line)}
+  .cjm-m{font-weight:700;font-size:11.5px;padding:8px;min-height:54px;border-bottom:1px solid var(--line);background:rgba(249,2,11,.08);color:#fff}
+  .cjm-emo{font-size:12px;padding:6px 8px;text-align:center;border-bottom:1px solid var(--line)}
+  .cjm-cell{font-size:11px;padding:6px 8px;border-bottom:1px solid var(--line);color:rgba(255,255,255,.82);line-height:1.35}
+  .cjm-cell .lbl{display:block;font-size:8.5px;text-transform:uppercase;letter-spacing:.4px;color:var(--mut);margin-bottom:2px}
+  .cjm-cell.op{color:#ffd2cf}
+  .cjm-curvewrap{border-bottom:1px solid var(--line)}
+  /* Diagramas de flujo (flowchart) */
+  .fc-box{fill:#232323;stroke:rgba(255,255,255,.18)}
+  .fc-start{fill:rgba(249,2,11,.16);stroke:var(--red)}
+  .fc-dec{fill:rgba(240,180,41,.12);stroke:var(--warn)}
+  .fc-br{fill:rgba(255,90,82,.10);stroke:rgba(255,90,82,.5)}
+  .fc-t{fill:#fff;font-size:11.5px}
+  .fc-c{text-anchor:middle}
+  .fc-line{stroke:var(--red);stroke-width:1.6;fill:none}
+  .fc-lbl{fill:var(--red2);font-size:10px;font-weight:700}
+  svg text{font-family:inherit}
+  .bsc{display:flex;flex-direction:column;gap:8px}
+  .bsc-row{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--c,#888);border-radius:12px;padding:12px 16px}
+  .bsc-h{font-weight:700;font-size:14px;margin-bottom:6px;color:var(--c,#fff)}
+  .bsc-row ul{margin:0;padding-left:18px;font-size:12.5px;color:rgba(255,255,255,.80);line-height:1.55}
+  .val{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:13px 15px}
+  .val b{color:var(--red2);font-size:13px}
+  .val p{color:var(--mut);font-size:12px;margin-top:4px;line-height:1.45}
+
+  /* Service Blueprint */
+  .bp-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+  table.bp{border-collapse:collapse;min-width:1040px;font-size:11.5px;width:100%}
+  table.bp th,table.bp td{border:1px solid var(--line);padding:8px 9px;vertical-align:top;width:130px;line-height:1.35}
+  table.bp th{background:var(--panel2);color:#fff;text-align:left;font-size:11.5px;font-weight:700}
+  table.bp .lane{background:var(--panel2);font-weight:700;font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:.4px;width:128px;min-width:128px}
+  table.bp td.cli{color:#fff}
+  table.bp tr.sep td{background:#141414;color:var(--mut);font-size:9.5px;text-transform:uppercase;letter-spacing:1px;text-align:center;padding:3px;border-style:dashed}
+  table.bp tr.auto-row td{background:rgba(249,2,11,.09);color:#ffd2cf}
+  table.bp tr.auto-row .lane{color:var(--red2)}
+
+  /* Mapa de sistemas */
+  .syslayer{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 14px;margin-bottom:8px}
+  .syslabel{font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:var(--gold);margin-bottom:8px}
+  .syschips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:7px 11px;font-size:12px;min-width:96px}
+  .chip b{display:block;font-size:12.5px}
+  .chip span{color:var(--mut);font-size:10px}
+  .chip.core{border-color:rgba(249,2,11,.45);background:linear-gradient(180deg,rgba(249,2,11,.08),var(--panel2))}
+  .chip.ia{border-color:rgba(43,191,122,.4)}
+  .sysgap{background:rgba(255,90,82,.10);border:1px solid rgba(255,90,82,.4);border-radius:11px;padding:11px 14px;font-size:12.5px;color:#ffd2cf;margin:8px 0}
+  .sysarrow{text-align:center;color:var(--red);font-size:17px;line-height:1;margin:1px 0}
+
+  /* Plan 30-60-90 */
+  .daypill{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:var(--red);border-radius:999px;padding:3px 11px;margin-bottom:8px}
+  .plan-card ul{margin:6px 0 0;padding-left:17px;font-size:12.5px;color:rgba(255,255,255,.82);line-height:1.6}
+</style>
+</head>
+<body>
+<div class="bgwrap"></div>
+
+<header>
+  <div class="brand"><b>C4V</b> LÁSER <span>· Cómo funciona la empresa</span></div>
+  <div class="who">Onboarding · Dirección de Tecnología<br>Bienvenido, <b>Martin Velasco</b> — Gerente de Tecnología</div>
+</header>
+
+<nav>
+  <button class="active" data-s="resumen">Resumen</button>
+  <button data-s="empresas">El grupo</button>
+  <button data-s="estrategia">Estrategia</button>
+  <button data-s="org">Organigrama</button>
+  <button data-s="journey">Journey · general</button>
+  <button data-s="detalle">Journey · detallado</button>
+  <button data-s="blueprint">Service Blueprint</button>
+  <button data-s="flujos">Flujos de proceso</button>
+  <button data-s="equipo">Valor del equipo</button>
+  <button data-s="sistemas">Sistemas</button>
+  <button data-s="auto">Dónde automatizar</button>
+  <button data-s="plan">Plan 90 días</button>
+</nav>
+
+<main>
+  <!-- RESUMEN -->
+  <section id="resumen" class="active">
+    <h2>La empresa <span class="em">en un vistazo</span></h2>
+    <p class="sub">C4V Láser vende máquinas de corte láser CO2 y fibra a emprendedores en Perú, Ecuador, Bolivia y la región. Importa directo de China (RUIDA), capacita de por vida (C4V School) y da soporte técnico en español. El diferencial: precio-calidad + acompañamiento + ahora IA en las máquinas (CeVi).</p>
+    <div class="grid kpis">
+      <div class="kpi"><div class="n">17</div><div class="l">personas (4 directores + 13 + 3 externos)</div></div>
+      <div class="kpi"><div class="n">15</div><div class="l">máquinas vendidas / mes</div></div>
+      <div class="kpi"><div class="n">1.384</div><div class="l">leads activos en Odoo</div></div>
+      <div class="kpi"><div class="n">329</div><div class="l">clientes</div></div>
+      <div class="kpi"><div class="n">~4 sem</div><div class="l">ciclo de venta promedio</div></div>
+      <div class="kpi"><div class="n">~30</div><div class="l">máquinas / contenedor (casi mensual)</div></div>
+    </div>
+    <div class="grid kpis" style="margin-top:14px">
+      <div class="card"><h3>Cómo gana dinero</h3><p class="muted">Vende máquinas láser (ticket alto) + repuestos/servicio. El motor es generar leads en redes, convertirlos a venta y sostener al cliente con capacitación y soporte para que recompre y recomiende.</p></div>
+      <div class="card"><h3>Stack tecnológico</h3><p class="muted">Odoo 19 Enterprise (ERP/CRM, <b>erp.c4vlaser.com</b>), ManyChat (bot de captura de leads WA/IG), WordPress + Tutor LMS (C4V School), n8n + Railway (automatizaciones), WhatsApp (comunicación interna y soporte).</p></div>
+      <div class="card red"><h3>El gran dolor hoy</h3><p class="muted">Los leads se pierden por seguimiento manual, y el <b>soporte no tiene coordinador</b> (los ingenieros se pasan la bola y el cliente se queja). Ahí es donde la tecnología puede mover la aguja ya.</p></div>
+    </div>
+  </section>
+
+  <!-- EMPRESAS -->
+  <section id="empresas">
+    <h2>El grupo de <span class="em">empresas</span></h2>
+    <p class="sub">C4V opera como un grupo: una marca comercial con varias entidades legales por país, la sede de compras en China, la academia y la línea de formación. Todo se gestiona desde un mismo Odoo (BD <b>c4v_migrado</b>).</p>
+    <div class="grid ecos">
+      <div class="co"><div class="cn">C4V LÁSER S.C.R.L. <span class="tag t-ok">Principal</span></div><div class="cc">Perú — marca comercial y operación central.</div></div>
+      <div class="co"><div class="cn">KUY IMPORTACIONES S.A.C.</div><div class="cc">Perú — entidad de importaciones.</div></div>
+      <div class="co"><div class="cn">MAQUIBO SRL</div><div class="cc flag">🇧🇴 Bolivia — operación local.</div></div>
+      <div class="co"><div class="cn">MAQUINARIA INTELIGENTE CHILE LTDA</div><div class="cc flag">🇨🇱 Chile — operación local.</div></div>
+      <div class="co"><div class="cn">MAQUINARIASMART S.A.S.</div><div class="cc flag">🇪🇨 Ecuador — operación local.</div></div>
+      <div class="co"><div class="cn">SHENZHEN JCS TECHNOLOGY</div><div class="cc flag">🇨🇳 China — sede de compras (relación RUIDA).</div></div>
+      <div class="co"><div class="cn">C4V School</div><div class="cc">Academia online (cursos láser, estilo Duolingo). Mascota: CeVi 🐂.</div></div>
+      <div class="co"><div class="cn">Coaching / Formación — Irene Velasco</div><div class="cc">Línea de coaching y formación de emprendedores.</div></div>
+    </div>
+    <div class="note">Nota: en Odoo también existen entidades antiguas/de prueba (C4V Ingeniería — no usar, C4V Demo — pruebas) que no forman parte de la operación real.</div>
+  </section>
+
+  <!-- ESTRATEGIA -->
+  <section id="estrategia">
+    <h2>Estrategia — <span class="em">hacia dónde va</span></h2>
+    <p class="sub">Misión, visión, valores y el mapa estratégico (Balanced Scorecard). Esto le da al director el rumbo: no solo cómo opera C4V, sino qué busca lograr.</p>
+
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(290px,1fr))">
+      <div class="card" style="border-left:3px solid var(--red)"><h3>🎯 Misión</h3>
+        <p class="muted" style="font-size:13.5px;line-height:1.55">Proveer soluciones de corte láser de alta calidad, confiables y accesibles, que faciliten crear y consolidar negocios en diversos sectores. Acompañamos con soporte técnico, formación constante y un ecosistema de herramientas que agrega valor en cada etapa del emprendimiento.</p></div>
+      <div class="card" style="border-left:3px solid var(--gold)"><h3>🌍 Visión</h3>
+        <p class="muted" style="font-size:13.5px;line-height:1.55">Ser la marca líder en máquinas de corte láser en Perú y Latinoamérica, reconocida globalmente por su innovación, eficiencia y compromiso con los emprendedores; con una comunidad sólida que nos identifique como la mejor máquina láser del Perú y su aliado estratégico.</p></div>
+    </div>
+
+    <h3 style="margin:24px 0 11px;font-size:16px">Valores</h3>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(215px,1fr))">
+      <div class="val"><b>1 · Compromiso con el emprendedor</b><p>Acompañamos desde el primer corte: capacitación, soporte y herramientas para que el negocio crezca.</p></div>
+      <div class="val"><b>2 · Transformación tecnológica</b><p>Soluciones como Cero Quemado y la Línea Pro IA (operar la máquina desde el celular).</p></div>
+      <div class="val"><b>3 · Profesionalismo</b><p>Seriedad, eficiencia, garantías claras y servicio postventa.</p></div>
+      <div class="val"><b>4 · Solidaridad emprendedora</b><p>Compartimos conocimiento, plantillas y estrategias. Si tú creces, nosotros también.</p></div>
+      <div class="val"><b>5 · Transparencia</b><p>Comunicamos con honestidad productos, beneficios y condiciones.</p></div>
+      <div class="val"><b>6 · Optimismo y motivación</b><p>Creemos en el potencial de cada emprendedor y lo inspiramos.</p></div>
+      <div class="val"><b>7 · Responsabilidad con impacto</b><p>Negocios sostenibles, iniciativas sociales y cuidado del entorno.</p></div>
+      <div class="val"><b>8 · Trabajo colaborativo</b><p>Una comunidad de apoyo antes, durante y después de la venta.</p></div>
+      <div class="val"><b>9 · Respeto</b><p>Consideración, cortesía y empatía; valoramos la diversidad.</p></div>
+      <div class="val"><b>10 · Pasión por enseñar</b><p>Enseñamos con paciencia para que cualquiera domine el corte láser.</p></div>
+    </div>
+
+    <h3 style="margin:24px 0 6px;font-size:16px">Mapa estratégico — Balanced Scorecard</h3>
+    <p class="muted" style="margin-bottom:11px">Se construye <b>de abajo hacia arriba</b> &#8593;: el aprendizaje habilita los procesos, que satisfacen a los clientes, que generan los resultados financieros.</p>
+    <div class="bsc">
+      <div class="bsc-row" style="--c:#E0B978"><div class="bsc-h">💰 Financiera — ¿qué resultados buscamos?</div>
+        <ul><li>Rentabilidad con productos de alto valor (Línea Pro IA).</li><li>Más participación de mercado en PE/BO/EC, con proyección global.</li><li>Optimizar márgenes (costos operativos y producción eficiente).</li><li>Diversificar ingresos: formación, accesorios, mantenimiento, leasing.</li></ul></div>
+      <div class="bsc-row" style="--c:#3aa0ff"><div class="bsc-h">👥 Clientes — ¿cómo deben vernos?</div>
+        <ul><li>La empresa más confiable, con servicio técnico cercano y oportuno.</li><li>Un aliado estratégico que capacita, guía y respalda desde el día uno.</li><li>Referente tecnológico (cero quemados, fácil de usar, acabado profesional).</li><li>Una marca que entiende al emprendedor latinoamericano.</li></ul></div>
+      <div class="bsc-row" style="--c:#2bbf7a"><div class="bsc-h">⚙️ Procesos internos — ¿en qué ser excelentes?</div>
+        <ul><li>Posventa y soporte inmediato, incluso fines de semana y feriados.</li><li>Diseño y mejora continua de las máquinas (durabilidad, usabilidad).</li><li>Logística de importación, entrega e instalación en la región andina.</li><li>Contenido educativo y herramientas comerciales para emprendedores.</li></ul></div>
+      <div class="bsc-row" style="--c:#a78bfa"><div class="bsc-h">📘 Aprendizaje y crecimiento — ¿cómo innovar?</div>
+        <ul><li>I+D para tecnologías propias (Línea Pro IA).</li><li>Formación continua del equipo técnico y comercial.</li><li>Cultura de aprendizaje compartido y mejora constante.</li><li>Herramientas digitales (CRM, IA, formación) para escalar. <b style="color:var(--red2)">← aquí entra Martin</b></li></ul></div>
+    </div>
+  </section>
+
+  <!-- ORGANIGRAMA -->
+  <section id="org">
+    <h2>Quién es <span class="em">quién</span></h2>
+    <p class="sub">Dirección familiar (4 directores) + equipos por área. Martin Velasco se suma como Gerente de Tecnología, área de TI propia (por ahora, solo).</p>
+    <div class="branch-title">Dirección</div>
+    <div class="org-row">
+      <div class="person dir"><div class="nm">Jose Contreras</div><div class="ro">Gerente General · China/RUIDA, importaciones, decisión final</div></div>
+      <div class="person dir"><div class="nm">Irene Velasco</div><div class="ro">Gerente Comercial + Coach · ventas, talleres, lives</div></div>
+      <div class="person dir"><div class="nm">Sebastian Contreras</div><div class="ro">GG Adjunto + GG China · operaciones, transformación digital</div></div>
+      <div class="person dir"><div class="nm">Jair Contreras</div><div class="ro">Gerente Marketing · equipo creativo</div></div>
+    </div>
+
+    <div class="branch-title">Ventas — reporta a Irene</div>
+    <div class="teamrow">
+      <div class="mini"><b>Melva</b><span>Vendedora / cierre</span></div>
+      <div class="mini"><b>Jhovana</b><span>Vendedora / cierre</span></div>
+    </div>
+
+    <div class="branch-title">Marketing — reporta a Jair</div>
+    <div class="teamrow">
+      <div class="mini"><b>Lucia</b><span>Contenido (full)</span></div>
+      <div class="mini"><b>Antonella</b><span>Contenido (part)</span></div>
+      <div class="mini"><b>Diego</b><span>Film / edición</span></div>
+      <div class="mini"><b>Carlos</b><span>Diseño gráfico</span></div>
+      <div class="mini"><b>Gianella</b><span>Diseño de cortes</span></div>
+    </div>
+
+    <div class="branch-title">Soporte técnico — reporta a Jose</div>
+    <div class="teamrow">
+      <div class="mini"><b>Josafat</b><span>Ing. soporte 🇵🇪</span></div>
+      <div class="mini"><b>Gerson</b><span>Ing. soporte 🇵🇪</span></div>
+      <div class="mini"><b>Aldo</b><span>Ing. 🇧🇴 + sur PE</span></div>
+      <div class="mini"><b>Gustavo</b><span>Ing. 🇧🇴 remoto</span></div>
+    </div>
+
+    <div class="branch-title">Administración</div>
+    <div class="teamrow">
+      <div class="mini"><b>Elisabeth</b><span>Contadora · Odoo</span></div>
+      <div class="mini" style="opacity:.6"><b>Vacante</b><span>Inventario / logística</span></div>
+    </div>
+
+    <div class="branch-title">Tecnología / TI — área nueva</div>
+    <div class="teamrow">
+      <div class="mini" style="border-color:rgba(249,2,11,.5);min-width:200px"><b>Martin Velasco</b><span>Gerente de Tecnología · IA y automatización · solo por ahora</span></div>
+    </div>
+
+    <div class="branch-title">Externos</div>
+    <div class="teamrow">
+      <div class="mini"><b>Freelancer</b><span>ManyChat / bot</span></div>
+      <div class="mini"><b>Legal</b><span>asesoría</span></div>
+      <div class="mini"><b>Contable</b><span>asesoría</span></div>
+    </div>
+  </section>
+
+  <!-- JOURNEY GENERAL -->
+  <section id="journey">
+    <h2>El recorrido del <span class="em">cliente</span> — visión general ⭐</h2>
+    <p class="sub">Las 7 etapas que vive el cliente, con su <b>curva emocional</b> y las oportunidades clave de cada una. Base: tu journey de 7 etapas (~110 momentos). La pestaña <b>Journey · detallado</b> tiene todos los momentos.</p>
+    <div id="jcurve" class="card" style="overflow-x:auto"></div>
+    <div id="jgeneral" class="jflow" style="margin-top:14px"></div>
+  </section>
+
+  <!-- JOURNEY DETALLE -->
+  <section id="detalle">
+    <h2>Journey <span class="em">detallado</span></h2>
+    <p class="sub">Todos los momentos por etapa: actividad, "job to be done", canal, esfuerzo, emoción, nivel de experiencia (+) y oportunidad de mejora. Elige una etapa:</p>
+    <div id="jstagenav" class="stagenav"></div>
+    <div id="jtable" class="card" style="overflow-x:auto;margin-top:12px"></div>
+  </section>
+
+  <!-- SERVICE BLUEPRINT -->
+  <section id="blueprint">
+    <h2>Service <span class="em">Blueprint</span> — el detrás de escena</h2>
+    <p class="sub">El journey muestra lo que <b>vive el cliente</b>. El blueprint agrega lo invisible: quién atiende (frontstage), qué pasa por dentro (backstage) y qué <b>sistema</b> lo sostiene en cada fase. La última fila marca <b>dónde entra la automatización</b> — ese es tu mapa, Martin. La <i>línea de visibilidad</i> separa lo que el cliente ve de lo que no.</p>
+    <div class="bp-wrap">
+      <table class="bp" id="bptable"></table>
+    </div>
+    <div class="note">Lectura clave: donde el <b>backstage</b> es manual o no tiene dueño (captura de leads a Odoo, asignación de soporte) está el mayor retorno. La fila roja conecta cada hueco con la iniciativa que lo resuelve.</div>
+  </section>
+
+  <!-- FLUJOS -->
+  <section id="flujos">
+    <h2>Flujos de <span class="em">proceso</span></h2>
+    <p class="sub">Cómo fluye el trabajo dentro de la empresa. Arriba, el mapa por fases; abajo, el <b>diagrama de flujo de cada fase</b> con sus decisiones (como los que dibujaste). Elige una fase.</p>
+
+    <div class="card" style="overflow-x:auto;margin-bottom:16px">
+      <h3>Proceso de la empresa — de la atracción a la posventa</h3>
+      <div class="jflow">
+        <div class="stage"><div class="step">FASE 1</div><div class="sn">Marketing</div><div class="row">Atrae con contenido, lives y ads.</div></div>
+        <div class="jarrow">&#8594;</div>
+        <div class="stage"><div class="step">FASE 2</div><div class="sn">Recepción</div><div class="row">Bot capta y clasifica el lead.</div></div>
+        <div class="jarrow">&#8594;</div>
+        <div class="stage"><div class="step">FASE 3</div><div class="sn">Venta</div><div class="row">Asesora, cotiza y cierra.</div></div>
+        <div class="jarrow">&#8594;</div>
+        <div class="stage"><div class="step">FASE 4</div><div class="sn">Compra / Import.</div><div class="row">Pedido a China (RUIDA).</div></div>
+        <div class="jarrow">&#8594;</div>
+        <div class="stage"><div class="step">FASE 5</div><div class="sn">Despacho</div><div class="row">Entrega, instala y calibra.</div></div>
+        <div class="jarrow">&#8594;</div>
+        <div class="stage"><div class="step">FASE 6</div><div class="sn">Capacitación</div><div class="row">Ense&#241;a a operar; cursos.</div></div>
+        <div class="jarrow">&#8594;</div>
+        <div class="stage"><div class="step">FASE 7</div><div class="sn">Posventa</div><div class="row">Resuelve fallas (garant&#237;a).</div></div>
+      </div>
+      <p class="muted" style="margin-top:10px">&#129302; D&#243;nde entra la tecnolog&#237;a: Recepci&#243;n (bot), Venta (follow-up + cotizador), Despacho (verificaci&#243;n de pago / Toby), Posventa (coordinador + CeVi).</p>
+    </div>
+
+    <div class="card" style="margin-bottom:16px">
+      <h3>Diagrama de flujo por fase</h3>
+      <div id="flownav" class="stagenav"></div>
+      <div id="flowchart" style="margin-top:14px;overflow-x:auto"></div>
+      <p class="muted" id="flownote" style="margin-top:10px"></p>
+    </div>
+
+    <div class="card" style="overflow-x:auto">
+      <h3>Detalle por &#225;rea y fase</h3>
+      <table>
+        <thead><tr><th>&#193;rea</th><th>Marketing</th><th>Recepci&#243;n</th><th>Venta</th><th>Compra/Imp.</th><th>Despacho</th><th>Capacit.</th><th>Posventa</th></tr></thead>
+        <tbody>
+          <tr><td><b>Marketing</b><br><span class="muted">Jair+equipo</span></td><td>Contenido, lives, ads</td><td class="muted">&#8212;</td><td class="muted">&#8212;</td><td class="muted">&#8212;</td><td class="muted">&#8212;</td><td class="muted">&#8212;</td><td>Casos de &#233;xito</td></tr>
+          <tr><td><b>Ventas</b><br><span class="muted">Irene, Melva, Jhovana</span></td><td class="muted">&#8212;</td><td>Toma el lead</td><td>Llamada, cotiza, cierra</td><td class="muted">&#8212;</td><td>Coordina entrega</td><td class="muted">&#8212;</td><td>Encuesta, recompra</td></tr>
+          <tr><td><b>Dir./Compras</b><br><span class="muted">Jose, Sebastian</span></td><td class="muted">&#8212;</td><td class="muted">&#8212;</td><td>Aprueba grandes</td><td>Pedido a China</td><td>Recibe contenedor</td><td class="muted">&#8212;</td><td class="muted">&#8212;</td></tr>
+          <tr><td><b>Logística</b><br><span class="muted">vacante</span></td><td class="muted">&#8212;</td><td class="muted">&#8212;</td><td class="muted">&#8212;</td><td>Inventario</td><td>Transporte, entrega</td><td class="muted">&#8212;</td><td>Repuestos</td></tr>
+          <tr><td><b>Soporte</b><br><span class="muted">Josafat, Gerson, Aldo, Gustavo</span></td><td class="muted">&#8212;</td><td class="muted">&#8212;</td><td class="muted">&#8212;</td><td class="muted">&#8212;</td><td>Instala y calibra</td><td>Ense&#241;a a operar</td><td>Resuelve fallas</td></tr>
+          <tr><td><b>Admin</b><br><span class="muted">Elisabeth</span></td><td class="muted">&#8212;</td><td class="muted">&#8212;</td><td>Factura/proforma</td><td>Pago internacional</td><td>Conformidad</td><td class="muted">&#8212;</td><td>Cobros</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- VALOR DEL EQUIPO -->
+  <section id="equipo">
+    <h2>Valor del <span class="em">equipo</span> — marco para evaluar</h2>
+    <p class="sub">Marco (estilo Value Stream Map) para medir si cada persona dedica su tiempo a lo que de verdad genera valor, contra su KPI. Lo que NO genera valor (No-VA) es el candidato directo a automatizar — el trabajo de Martin. <b>Es una plantilla a llenar</b> (aún no hay registro de horas).</p>
+    <div class="card"><h3>Cómo se mide — 1 semana de muestreo por persona</h3>
+      <p class="muted">Registrar el tiempo por actividad durante una semana y clasificar: <b style="color:var(--ok)">VA</b> (valor agregado: avanza venta / soporte / contenido) vs <b style="color:var(--crit)">No-VA</b> (esperas, búsquedas, coordinación manual, retrabajo). Comparar contra el KPI. Métricas por proceso: <b>LT</b> (tiempo total), <b>%VA</b>, <b>%No-VA</b>, <b>KPI alcanzado</b>.</p>
+    </div>
+    <div class="card" style="margin-top:14px;overflow-x:auto">
+      <table>
+        <thead><tr><th>Área / persona</th><th>KPI principal (qué es "estar trabajando")</th><th style="color:var(--ok)">Valor agregado (VA)</th><th style="color:var(--crit)">Sin valor / a reducir (No-VA)</th><th>Automatización que libera</th></tr></thead>
+        <tbody>
+          <tr><td><b>Ventas</b><br><span class="muted">Melva, Jhovana</span></td><td>% conversión cotización→cierre · nº cierres/mes · tiempo de respuesta</td><td>Llamadas de cierre, cotizar, asesorar</td><td>Buscar info, seguimiento manual, reescribir precios</td><td>Follow-up Bot + Cotizador</td></tr>
+          <tr><td><b>Marketing</b><br><span class="muted">Lucia, Antonella, Diego, Carlos, Gianella</span></td><td>Grilla cumplida · nº videos/sem · engagement</td><td>Guion, grabación, edición, diseño</td><td>Programar a mano, reuniones largas</td><td>Content Scheduler</td></tr>
+          <tr><td><b>Soporte</b><br><span class="muted">Josafat, Gerson, Aldo, Gustavo</span></td><td>Tickets resueltos · tiempo 1ª respuesta · % sin escalar</td><td>Resolver la falla del cliente</td><td>Decidir quién atiende, cliente repite todo, esperas</td><td>Coordinador Soporte + Bot L1 + CeVi</td></tr>
+          <tr><td><b>Admin</b><br><span class="muted">Elisabeth</span></td><td>Cierre contable a tiempo · facturas sin error</td><td>Conciliar, controlar calendario ingenieros</td><td>Captura manual, duplicados en Odoo</td><td>Limpieza Odoo + automatizaciones</td></tr>
+          <tr><td><b>Dirección</b><br><span class="muted">Jose, Sebastian, Irene, Jair</span></td><td>Ventas/mes · margen · cumplimiento del plan</td><td>Decisiones, relación China, cierre de grandes</td><td>Reportes manuales, apagar incendios</td><td>Dashboards en vivo + alertas</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">Insight para Martin: la columna <b>"Sin valor (No-VA)"</b> es tu mapa de oportunidades. Cada actividad No-VA que automatices libera horas que el equipo reinvierte en lo que sí mueve el KPI.</div>
+  </section>
+
+  <!-- MAPA DE SISTEMAS -->
+  <section id="sistemas">
+    <h2>Mapa de <span class="em">sistemas</span> — arquitectura actual</h2>
+    <p class="sub">Lo primero que un Gerente de Tecnología quiere ver: qué herramientas existen, cómo fluye el dato y dónde están los <b>huecos de integración</b>. C4V no tiene un sistema monolítico: tiene un core (Odoo) rodeado de satélites, y dos puntos donde el dato salta a mano.</p>
+    <div class="sysmap">
+      <div class="syslayer"><div class="syslabel">① Canales — donde está el cliente</div>
+        <div class="syschips">
+          <div class="chip"><b>WhatsApp</b><span>venta + soporte</span></div>
+          <div class="chip"><b>Instagram</b><span>contenido + DM</span></div>
+          <div class="chip"><b>TikTok</b><span>contenido + lives</span></div>
+          <div class="chip"><b>Facebook</b><span>contenido + ads</span></div>
+          <div class="chip"><b>Web</b><span>c4vlaser.com</span></div>
+          <div class="chip"><b>Showroom</b><span>presencial</span></div>
+        </div></div>
+      <div class="sysarrow">&#8595;</div>
+      <div class="syslayer"><div class="syslabel">② Captura de leads</div>
+        <div class="syschips">
+          <div class="chip"><b>ManyChat</b><span>bot WA/IG/TikTok/FB · clasifica y reparte</span></div>
+        </div></div>
+      <div class="sysgap">&#9888;&#65039; <b>Hueco #1:</b> ManyChat y Odoo <b>NO están integrados</b>. Melva y Jhovana copian el lead a mano → se pierden seguimientos. (Integrarlos = quick win de alto retorno.)</div>
+      <div class="syslayer"><div class="syslabel">③ Core — ERP / CRM</div>
+        <div class="syschips">
+          <div class="chip core"><b>Odoo 19 Enterprise</b><span>erp.c4vlaser.com · BD c4v_migrado</span></div>
+          <div class="chip core"><b>CRM</b><span>1.384 leads</span></div>
+          <div class="chip core"><b>Ventas</b><span>1.849 órdenes</span></div>
+          <div class="chip core"><b>Helpdesk</b><span>tickets soporte</span></div>
+          <div class="chip core"><b>Planning</b><span>calendario ing.</span></div>
+          <div class="chip core"><b>Inventario</b><span>importaciones</span></div>
+          <div class="chip core"><b>Contabilidad</b><span>Elisabeth</span></div>
+        </div></div>
+      <div class="sysarrow">&#8595;</div>
+      <div class="syslayer"><div class="syslabel">④ Satélites — alrededor del core</div>
+        <div class="syschips">
+          <div class="chip"><b>C4V School</b><span>WordPress + Tutor LMS</span></div>
+          <div class="chip"><b>n8n + Railway</b><span>automatizaciones</span></div>
+          <div class="chip"><b>NAS QNAP</b><span>archivos</span></div>
+          <div class="chip"><b>Banco</b><span>BBVA / BCP</span></div>
+          <div class="chip"><b>Alibaba / RUIDA</b><span>compras China</span></div>
+          <div class="chip"><b>Agencia aduanas</b><span>importación</span></div>
+        </div></div>
+      <div class="sysarrow">&#8595;</div>
+      <div class="syslayer"><div class="syslabel">⑤ Capa de IA — el diferencial</div>
+        <div class="syschips">
+          <div class="chip ia"><b>CeVi</b><span>asistente de voz · Claude + Edge TTS · escribe en Odoo</span></div>
+          <div class="chip ia"><b>Toby</b><span>antifraude transferencias · IA local (Ollama)</span></div>
+          <div class="chip ia"><b>MCP Odoo</b><span>Claude ↔ Odoo directo</span></div>
+        </div></div>
+      <div class="syslayer"><div class="syslabel">⑥ Comunicación interna</div>
+        <div class="syschips">
+          <div class="chip"><b>WhatsApp</b><span>grupos por área y por cliente</span></div>
+          <div class="chip"><b>Discord</b><span>notificaciones a dirección</span></div>
+        </div></div>
+      <div class="sysgap">&#9888;&#65039; <b>Hueco #2:</b> el soporte vive en grupos de WhatsApp <b>sin coordinador ni registro automático</b> en Odoo. El <b>Coordinador de Soporte</b> cierra este hueco (prioridad #1).</div>
+    </div>
+  </section>
+
+  <!-- AUTOMATIZACIÓN -->
+  <section id="auto">
+    <h2>Dónde <span class="em">entrar a automatizar</span></h2>
+    <p class="sub">Tu playbook, Martin. Estas son las oportunidades ya mapeadas (las 6 skills de IA + CeVi + Toby), con estado e impacto. La filosofía: la IA <b>complementa</b> al equipo, no lo reemplaza.</p>
+    <div class="card" style="margin-bottom:16px">
+      <h3>Matriz impacto &times; esfuerzo — qué atacar primero</h3>
+      <div id="matrix" style="overflow-x:auto"></div>
+      <p class="muted" style="margin-top:8px">Cuadrante <b style="color:var(--ok)">arriba-izquierda</b> = quick wins (mucho impacto, poco esfuerzo): <b>empieza por ahí</b>. <b style="color:var(--warn)">Arriba-derecha</b> = proyectos grandes a planificar. La burbuja es el tamaño relativo del beneficio.</p>
+    </div>
+    <div class="card">
+      <table>
+        <thead><tr><th>Iniciativa</th><th>Etapa</th><th>Estado</th><th>Prioridad / impacto</th></tr></thead>
+        <tbody>
+          <tr><td><b>Coordinador de Soporte</b><br><span class="muted">asigna y escala tickets solo</span></td><td>Soportar</td><td><span class="tag t-warn">por construir</span></td><td><span class="prio" style="color:var(--crit)">#1 — frena el daño a la marca</span></td></tr>
+          <tr><td><b>Follow-up Bot</b><br><span class="muted">recordatorios de seguimiento en CRM</span></td><td>Vender</td><td><span class="tag t-warn">por activar</span></td><td><span class="prio" style="color:var(--warn)">Alta — recupera leads = plata directa</span></td></tr>
+          <tr><td><b>CeVi</b> — asistente de voz/IA<br><span class="muted">en la máquina + web, escribe en Odoo, crea tickets</span></td><td>Soportar / Fidelizar</td><td><span class="tag t-ok">en marcha</span></td><td><span class="prio" style="color:var(--ok)">Alta — diferencial 2026/2027</span></td></tr>
+          <tr><td><b>Bot Soporte L1</b><br><span class="muted">responde preguntas básicas de operación</span></td><td>Soportar</td><td><span class="tag t-warn">por construir</span></td><td>Media — alivia a los ingenieros</td></tr>
+          <tr><td><b>Cotizador Rápido</b><br><span class="muted">cotización automática desde ManyChat/Odoo</span></td><td>Vender</td><td><span class="tag t-warn">por optimizar</span></td><td>Media — acelera el cierre</td></tr>
+          <tr><td><b>Content Scheduler</b><br><span class="muted">programar y medir publicaciones</span></td><td>Atraer</td><td><span class="tag t-warn">por construir</span></td><td>Media-baja — ordena marketing</td></tr>
+          <tr><td><b>Verificación antifraude (Toby)</b><br><span class="muted">confirma la transferencia en el banco antes de despachar</span></td><td>Despachar</td><td><span class="tag t-warn">en desarrollo</span></td><td>Media — evita despachar sin cobro</td></tr>
+          <tr><td><b>Lead Catcher</b><br><span class="muted">captura/clasifica leads</span></td><td>Captar</td><td><span class="tag t-ok">ya existe</span></td><td>— (mantener)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">Otros frentes abiertos para TI: monitor automático de inventario, dashboard de métricas en vivo, limpieza de datos en Odoo (duplicados/precios), e integración Odoo ↔ herramientas. Buen punto de partida: arrancar por el <b>Coordinador de Soporte</b> (mayor dolor) y el <b>Follow-up</b> (mayor retorno).</div>
+  </section>
+
+  <!-- PLAN 90 DÍAS -->
+  <section id="plan">
+    <h2>Indicadores y <span class="em">plan de 90 días</span></h2>
+    <p class="sub">La línea base para medir el antes/después, y la hoja de ruta sugerida para tus primeros 3 meses, Martin. Regla de oro: <b>no se puede automatizar lo que no se mide</b> — por eso el mes 1 es instrumentar.</p>
+
+    <h3 style="margin-bottom:11px;font-size:16px">Línea base — la foto de hoy</h3>
+    <div class="grid kpis">
+      <div class="kpi"><div class="n">1.384</div><div class="l">leads activos</div></div>
+      <div class="kpi"><div class="n">1.849</div><div class="l">órdenes históricas</div></div>
+      <div class="kpi"><div class="n">329</div><div class="l">clientes</div></div>
+      <div class="kpi"><div class="n">15</div><div class="l">máquinas / mes</div></div>
+      <div class="kpi"><div class="n">~4 sem</div><div class="l">ciclo de venta</div></div>
+      <div class="kpi"><div class="n">17</div><div class="l">personas en el equipo</div></div>
+    </div>
+    <div class="note">&#9888;&#65039; Lo que HOY <b>no se mide</b> (y deberías instrumentar primero): cotizaciones enviadas vs. cerradas · tiempo de 1.ª respuesta en soporte · % de leads sin seguimiento · horas de equipo en tareas No-VA. Son tus indicadores de ROI.</div>
+
+    <h3 style="margin:22px 0 11px;font-size:16px">Ruta 30 &middot; 60 &middot; 90 días</h3>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+      <div class="card red plan-card">
+        <span class="daypill">0 – 30 días</span>
+        <h3>Entender y medir</h3>
+        <ul>
+          <li>Accesos y mapa de sistemas (Odoo, ManyChat, n8n, banco).</li>
+          <li>Instrumentar el embudo y el SLA de soporte en Odoo.</li>
+          <li>1 semana de muestreo VA / No-VA por área (ver "Valor del equipo").</li>
+          <li><b>Quick win:</b> integrar ManyChat &harr; Odoo o tablero en vivo.</li>
+        </ul>
+      </div>
+      <div class="card plan-card">
+        <span class="daypill" style="background:var(--warn);color:#1a1a1a">30 – 60 días</span>
+        <h3>Atacar el dolor #1</h3>
+        <ul>
+          <li>Construir y lanzar el <b>Coordinador de Soporte</b>.</li>
+          <li>Activar el <b>Follow-up Bot</b> en el CRM.</li>
+          <li>Medir contra la línea base: ¿bajó el tiempo de respuesta? ¿se recuperan leads?</li>
+        </ul>
+      </div>
+      <div class="card plan-card">
+        <span class="daypill" style="background:var(--ok)">60 – 90 días</span>
+        <h3>Escalar</h3>
+        <ul>
+          <li>Cotizador Rápido + Bot Soporte L1.</li>
+          <li>CeVi a más clientes · Toby a producción.</li>
+          <li>Limpieza de Odoo y monitor de inventario.</li>
+          <li>Dejar un <b>tablero de métricas vivo</b> para dirección.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  C4V Láser · Documento de onboarding para Dirección de Tecnología · Generado para Martin Velasco.<br>
+  Fuente: Organigrama &amp; Plan Digital 2026 + Odoo 19. Cifras a marzo 2026.
+</footer>
+
+<script>
+  const JOURNEY = [{"etapa": "Descubrimiento", "rows": [{"m": "Ve TikTok viral", "a": "Desliza feed, ve video", "j": "Inspirarse", "c": "TikTok", "e": "Bajo", "em": "😃 ¡Wow!", "n": "+7", "o": "CTA a WhatsApp"}, {"m": "Revisa TikTok Live", "a": "Ingresa al Live, lee chat", "j": "Validar autenticidad", "c": "TikTok Live", "e": "Bajo", "em": "😊 Buena", "n": "+6", "o": "Fijar FAQs en Live"}, {"m": "Observa clientes", "a": "Reproduce casos de éxito", "j": "Ver evidencia social", "c": "TikTok, Facebook", "e": "Bajo", "em": "😃 ¡Wow!", "n": "+7", "o": "Repost UGC"}, {"m": "Guarda video", "a": "Clic en guardar, comparte", "j": "Revisar luego, compartir", "c": "TikTok", "e": "Bajo", "em": "🙂 Funcional", "n": "+5", "o": "Retargeting a guardados"}, {"m": "Lee comentarios", "a": "Revisa hilos de dudas", "j": "Validar confianza", "c": "TikTok", "e": "Medio", "em": "😐 Básica", "n": "+4", "o": "Responder con cuenta oficial"}, {"m": "Encuentra reel IG", "a": "Ve reel varias veces", "j": "Explorar usos", "c": "Instagram", "e": "Bajo", "em": "🙂 Funcional", "n": "+6", "o": "Copy con materiales"}, {"m": "Ve historias éxito", "a": "Revisa highlights", "j": "Aspiración", "c": "Instagram Stories", "e": "Bajo", "em": "😊 Buena", "n": "+6", "o": "Antes/Después con ROI"}, {"m": "Da me gusta", "a": "Like, sigue la cuenta", "j": "Mantener contenido", "c": "TikTok", "e": "Bajo", "em": "😃 ¡Wow!", "n": "+6", "o": "Retargeting y DM"}, {"m": "Pregunta precio", "a": "Escribe en comentarios", "j": "Conocer rango", "c": "TikTok", "e": "Medio", "em": "🙁 Mala", "n": "+4", "o": "Responder con rango + CTA"}, {"m": "Copara Competencia vs C4V", "a": "Lee infografía/video", "j": "Entender diferencias", "c": "TikTok, Instragram Facebook, Whatsapp", "e": "Medio", "em": "🙁 Mala", "n": "+3", "o": "Checklist anti-estafa"}, {"m": "Aparece anuncio IG", "a": "Dejar que reporduzca", "j": "Aumenta curiosidad del negocio", "c": "Instagram Ads", "e": "Medio", "em": "😊 Buena", "n": "+5", "o": "Anuncios personalizados"}, {"m": "Clic anuncio IG", "a": "Abre landing", "j": "Acceder info clara", "c": "Instagram Ads", "e": "Bajo", "em": "😊 Buena", "n": "+6", "o": "Landing con botón WhatsApp"}, {"m": "Busca en Google", "a": "Compara resultados", "j": "Mapear mercado", "c": "Google", "e": "Medio", "em": "😐 Básica", "n": "+4", "o": "Página SEO comparativa"}, {"m": "Amigo/familar recomienda", "a": "Conversa en WhatsApp", "j": "Aumentar confianza", "c": "WhatsApp", "e": "Bajo", "em": "😃 ¡Wow!", "n": "+8", "o": "Programa de referidos"}, {"m": "Recibe video", "a": "Reproduce, hace zoom", "j": "Ver calidad real", "c": "WhatsApp", "e": "Bajo", "em": "😊 Buena", "n": "+6", "o": "Catálogo ideas WhatsApp"}, {"m": "Visita stand", "a": "Ve demo, conversa", "j": "Contacto directo", "c": "Feria presencial", "e": "Medio", "em": "😃 ¡Wow!", "n": "+7", "o": "QR a WhatsApp"}, {"m": "Recibe folleto", "a": "Guarda y revisa", "j": "Analizar offline", "c": "Evento impreso", "e": "Bajo", "em": "🙂 Funcional", "n": "+5", "o": "QR en folleto"}, {"m": "Guarda contacto", "a": "Agrega vCard", "j": "Asegurar canal directo", "c": "WhatsApp", "e": "Bajo", "em": "😊 Buena", "n": "+6", "o": "Mensaje bienvenida"}, {"m": "Sigue página FB", "a": "Activa notificaciones", "j": "Mantenerse informado", "c": "Facebook", "e": "Bajo", "em": "🙂 Funcional", "n": "+5", "o": "Post fijo educativo"}, {"m": "Se suscribe IG", "a": "Revisa feed/highlights", "j": "Ver novedades", "c": "Instagram", "e": "Bajo", "em": "🙂 Funcional", "n": "+5", "o": "Mensaje bienvenida con guía"}]}, {"etapa": "Consideración", "rows": [{"m": "Envía primer WhatsApp", "a": "Escribe saludo", "j": "Iniciar contacto", "c": "WhatsApp", "e": "Bajo", "em": "😃 ¡Wow!", "n": "+6", "o": "Responder &lt;5 min"}, {"m": "Espera respuesta", "a": "Mira pantalla", "j": "Reducir incertidumbre", "c": "WhatsApp", "e": "Medio", "em": "🙁 Mala", "n": "+3", "o": "Auto-respuesta inmediata"}, {"m": "Recibe saludo asesor", "a": "Lee mensaje", "j": "Sentirse atendido", "c": "WhatsApp", "e": "Bajo", "em": "😊 Buena", "n": "+6", "o": "Script cálido inicial"}, {"m": "Pide catálogo PDF", "a": "Solicita info", "j": "Tener datos concretos", "c": "WhatsApp", "e": "Bajo", "em": "🙂 Funcional", "n": "+5", "o": "Catálogo visual actualizado"}, {"m": "Descarga catálogo", "a": "Revisa PDF", "j": "Analizar opciones", "c": "WhatsApp/PDF", "e": "Medio", "em": "🙂 Funcional", "n": "+5", "o": "PDF interactivo con links"}, {"m": "Pide fotos reales", "a": "Solicita imágenes", "j": "Validar existencia real", "c": "WhatsApp", "e": "Medio", "em": "😊 Buena", "n": "+6", "o": "Banco de fotos reales"}, {"m": "Solicita video", "a": "Pide demo en video", "j": "Ver máquina activa", "c": "WhatsApp", "e": "Medio", "em": "😃 ¡Wow!", "n": "+7", "o": "Videos pregrabados de uso"}, {"m": "Pregunta precio modelo pequeño", "a": "Consulta costo", "j": "Conocer barrera entrada", "c": "WhatsApp", "e": "Medio", "em": "🙁 Mala", "n": "+4", "o": "Precio claro con beneficios"}, {"m": "Pregunta precio modelo intermedio", "a": "Consulta costo", "j": "Comparar opciones", "c": "WhatsApp", "e": "Medio", "em": "🙁 Mala", "n": "+4", "o": "Tabla comparativa"}, {"m": "Pregunta tiempo entrega", "a": "Solicita fechas", "j": "Planificar inversión", "c": "WhatsApp", "e": "Medio", "em": "🙂 Funcional", "n": "+5", "o": "Calendario entrega visible"}, {"m": "Pregunta garantía", "a": "Consulta cobertura", "j": "Reducir riesgo", "c": "WhatsApp", "e": "Medio", "em": "😐 Básica", "n": "+5", "o": "Explicar garantía visual"}, {"m": "Pregunta repuestos", "a": "Consulta stock", "j": "Asegurar continuidad", "c": "WhatsApp", "e": "Medio", "em": "🙁 Mala", "n": "+4", "o": "Foto repuestos en almacén"}, {"m": "Pregunta costos ocultos", "a": "Consulta extras", "j": "Calcular inversión real", "c": "WhatsApp", "e": "Medio", "em": "🙁 Mala", "n": "+3", "o": "Lista clara de costos"}, {"m": "Pregunta capacitación", "a": "Consulta entrenamientos", "j": "Reducir curva aprendizaje", "c": "WhatsApp", "e": "Medio", "em": "🙂 Funcional", "n": "+5", "o": "Mostrar syllabus"}, {"m": "Pregunta uso en casa", "a": "Consulta requisitos", "j": "Evaluar viabilidad", "c": "WhatsApp", "e": "Medio", "em": "🙂 Funcional", "n": "+5", "o": "Explicar consumo/luz"}, {"m": "Pregunta materiales", "a": "Consulta compatibilidad", "j": "Confirmar utilidad", "c": "WhatsApp", "e": "Medio", "em": "😊 Buena", "n": "+6", "o": "Tabla materiales"}, {"m": "Pide ejemplos productos", "a": "Solicita catálogo trabajos", "j": "Inspirarse", "c": "WhatsApp", "e": "Medio", "em": "😃 ¡Wow!", "n": "+7", "o": "Mostrar portafolio"}, {"m": "Muestra Competencia", "a": "Comparte captura", "j": "Presionar comparación", "c": "WhatsApp", "e": "Alto", "em": "😡 Lo odio", "n": "+2", "o": "Checklist anti-estafa"}, {"m": "Pregunta descuentos", "a": "Consulta rebajas", "j": "Negociar inversión", "c": "WhatsApp", "e": "Medio", "em": "🙁 Mala", "n": "+4", "o": "Explicar valor agregado"}, {"m": "Conversa con pareja", "a": "Discute decisión", "j": "Validar apoyo familiar", "c": "WhatsApp offline", "e": "Medio", "em": "😐 Básica", "n": "+5", "o": "Material para familiares"}, {"m": "Consulta con socio", "a": "Comparte info", "j": "Validar socio", "c": "WhatsApp offline", "e": "Medio", "em": "😐 Básica", "n": "+5", "o": "Resumen para socios"}, {"m": "Pide tiempo", "a": "Solicita pensar más", "j": "Procesar decisión", "c": "WhatsApp", "e": "Medio", "em": "🙁 Mala", "n": "+4", "o": "Recordatorio amable"}, {"m": "Vuelve con dudas", "a": "Repite preguntas", "j": "Reasegurar decisión", "c": "WhatsApp", "e": "Medio", "em": "🙁 Mala", "n": "+4", "o": "FAQ personalizada"}, {"m": "Busca reseñas Google", "a": "Lee comentarios", "j": "Validar reputación", "c": "Google", "e": "Medio", "em": "🙂 Funcional", "n": "+5", "o": "Gestionar reseñas positivas"}, {"m": "Revisa TikTok otra vez", "a": "Vuelve a videos", "j": "Reforzar confianza", "c": "TikTok", "e": "Bajo", "em": "😊 Buena", "n": "+6", "o": "Historias clientes nuevos"}]}, {"etapa": "Evaluación / Confianza", "rows": [{"m": "Agenda cita showroom", "a": "Coordina día/hora", "j": "Planificar visita", "c": "WhatsApp", "e": "Medio", "em": "😃 ¡Wow!", "n": "+6", "o": "Agenda digital con recordatorio"}, {"m": "Coordina transporte", "a": "Organiza traslado", "j": "Asegurar puntualidad", "c": "WhatsApp/Offline", "e": "Medio", "em": "😐 Básica", "n": "+4", "o": "Guía ubicación clara"}, {"m": "Llega al showroom", "a": "Es recibido", "j": "Validar seriedad", "c": "Showroom", "e": "Medio", "em": "😊 Buena", "n": "+6", "o": "Protocolo bienvenida"}, {"m": "Ve máquinas exhibición", "a": "Observa equipos", "j": "Evaluar opciones", "c": "Showroom", "e": "Medio", "em": "😃 ¡Wow!", "n": "+7", "o": "Destacar modelos premium"}, {"m": "Observa demo inicial", "a": "Mira funcionamiento", "j": "Confiar en producto", "c": "Showroom", "e": "Medio", "em": "🙂 Funcional", "n": "+5", "o": "Explicar beneficios paso a paso"}, {"m": "Prueba corte propio", "a": "Entrega material", "j": "Validar calidad real", "c": "Showroom", "e": "Alto", "em": "😃 ¡Wow!", "n": "+8", "o": "Demostración con su material"}, {"m": "Pide grabado logo", "a": "Entrega archivo", "j": "Visualizar personalización", "c": "Showroom", "e": "Medio", "em": "😃 ¡Wow!", "n": "+7", "o": "Ejemplo personalizado"}, {"m": "Graba demo con celular", "a": "Filma proceso", "j": "Guardar evidencia", "c": "Showroom", "e": "Bajo", "em": "🙂 Funcional", "n": "+5", "o": "Permitir compartir en redes"}, {"m": "Pregunta por tubo", "a": "Consulta durabilidad", "j": "Reducir riesgo", "c": "Showroom", "e": "Medio", "em": "🙁 Mala", "n": "+4", "o": "Mostrar repuesto físico"}, {"m": "Pide lista repuestos", "a": "Solicita detalles", "j": "Asegurar continuidad", "c": "Showroom", "e": "Medio", "em": "🙂 Funcional", "n": "+5", "o": "Lista impresa con fotos"}, {"m": "Consulta soporte", "a": "Pregunta atención postventa", "j": "Validar respaldo", "c": "Showroom", "e": "Medio", "em": "🙁 Mala", "n": "+4", "o": "Explicar soporte 24/7"}, {"m": "Revisa contrato", "a": "Lee documento", "j": "Analizar compromiso", "c": "Showroom", "e": "Alto", "em": "🙁 Mala", "n": "+3", "o": "Contrato simple y visual"}, {"m": "Pregunta entrega", "a": "Confirma plazos", "j": "Planificar inicio negocio", "c": "Showroom", "e": "Medio", "em": "😐 Básica", "n": "+5", "o": "Cronograma visual"}, {"m": "Busca testimonios", "a": "Ve reseñas online", "j": "Validar reputación", "c": "Google/TikTok", "e": "Medio", "em": "😊 Buena", "n": "+6", "o": "Video testimonios"}, {"m": "Negocia precio", "a": "Solicita rebaja", "j": "Reducir inversión", "c": "Showroom", "e": "Alto", "em": "🙁 Mala", "n": "+3", "o": "Explicar valor agregado"}]}, {"etapa": "Compra", "rows": [{"m": "Recibe cotización PDF", "a": "Abre y revisa documento", "j": "Analizar costos", "c": "WhatsApp/Email", "e": "Medio", "em": "🙂 Funcional", "n": "+5", "o": "Cotización clara con beneficios"}, {"m": "Revisa cotización", "a": "Compara detalles", "j": "Confirmar inversión", "c": "WhatsApp/Email", "e": "Medio", "em": "🙁 Mala", "n": "+4", "o": "Simplificar cotización"}, {"m": "Pide cambios cotización", "a": "Solicita ajustes", "j": "Personalizar inversión", "c": "WhatsApp", "e": "Medio", "em": "🙁 Mala", "n": "+4", "o": "Flexibilidad en opciones"}, {"m": "Decide modelo", "a": "Selecciona equipo final", "j": "Tomar decisión", "c": "WhatsApp/Showroom", "e": "Medio", "em": "😊 Buena", "n": "+6", "o": "Guiar con recomendación personalizada"}, {"m": "Pregunta repuestos otra vez", "a": "Confirma stock", "j": "Reducir incertidumbre", "c": "WhatsApp", "e": "Medio", "em": "🙂 Funcional", "n": "+5", "o": "Mostrar almacén en foto/video"}, {"m": "Pide factura proforma", "a": "Solicita documento", "j": "Formalizar compra", "c": "WhatsApp/Email", "e": "Medio", "em": "😊 Buena", "n": "+6", "o": "Enviar rápido con firma digital"}, {"m": "Realiza transferencia", "a": "Hace pago", "j": "Concretar compra", "c": "Banco/WhatsApp", "e": "Alto", "em": "🙁 Mala", "n": "+4", "o": "Instrucciones claras de pago"}, {"m": "Envía comprobante", "a": "Remite voucher", "j": "Validar pago", "c": "WhatsApp/Email", "e": "Bajo", "em": "😊 Buena", "n": "+6", "o": "Responder con confirmación inmediata"}, {"m": "Recibe factura oficial", "a": "Guarda documento", "j": "Tener seguridad", "c": "Email/WhatsApp", "e": "Bajo", "em": "😃 ¡Wow!", "n": "+7", "o": "Entrega inmediata y formal"}, {"m": "Firma contrato", "a": "Firma digital/física", "j": "Formalizar compromiso", "c": "WhatsApp/Showroom", "e": "Medio", "em": "😊 Buena", "n": "+6", "o": "Contrato simple y visual"}]}, {"etapa": "Implementación", "rows": [{"m": "Coordina entrega", "a": "Confirma día con asesor", "j": "Planificar instalación", "c": "WhatsApp", "e": "Medio", "em": "🙂 Funcional", "n": "+5", "o": "Agenda digital"}, {"m": "Espera camión", "a": "Cuenta los días", "j": "Anticipar llegada", "c": "WhatsApp/Offline", "e": "Medio", "em": "🙁 Mala", "n": "+4", "o": "Notificación con tracking"}, {"m": "Recibe máquina", "a": "Firma recepción", "j": "Validar entrega", "c": "Domicilio/Taller", "e": "Medio", "em": "😃 ¡Wow!", "n": "+7", "o": "Protocolo de entrega"}, {"m": "Firma conformidad", "a": "Firma documento", "j": "Dejar constancia", "c": "Domicilio/Taller", "e": "Bajo", "em": "😊 Buena", "n": "+6", "o": "Checklist simple"}, {"m": "Verifica estado", "a": "Revisa empaque/equipo", "j": "Reducir riesgo", "c": "Domicilio/Taller", "e": "Medio", "em": "😐 Básica", "n": "+5", "o": "Fotos pre-envío"}, {"m": "Técnico arma máquina", "a": "Instala y calibra", "j": "Dejar operativa", "c": "Presencial", "e": "Medio", "em": "🙂 Funcional", "n": "+5", "o": "Guía paso a paso"}, {"m": "Graba armado", "a": "Filma instalación", "j": "Documentar proceso", "c": "Presencial", "e": "Bajo", "em": "😃 ¡Wow!", "n": "+7", "o": "Permitir grabar"}, {"m": "Aprende encendido", "a": "Recibe explicación", "j": "Operar máquina", "c": "Presencial", "e": "Medio", "em": "😊 Buena", "n": "+6", "o": "Manual simple"}, {"m": "Aprende calibración", "a": "Sigue al técnico", "j": "Mantenimiento básico", "c": "Presencial", "e": "Medio", "em": "😊 Buena", "n": "+6", "o": "Mini-video tutorial"}, {"m": "Realiza primer corte", "a": "Hace prueba guiada", "j": "Validar resultado", "c": "Presencial", "e": "Alto", "em": "😃 ¡Wow!", "n": "+8", "o": "Caso éxito inmediato"}, {"m": "Toma foto primer pieza", "a": "Captura resultado", "j": "Compartir logro", "c": "WhatsApp", "e": "Bajo", "em": "😃 ¡Wow!", "n": "+7", "o": "Compartir en comunidad"}, {"m": "Manda foto asesor", "a": "Envia imagen", "j": "Obtener feedback", "c": "WhatsApp", "e": "Bajo", "em": "😊 Buena", "n": "+6", "o": "Resaltar logro del cliente"}, {"m": "Intenta segundo corte solo", "a": "Prueba independiente", "j": "Validar confianza", "c": "Taller", "e": "Medio", "em": "🙁 Mala", "n": "+4", "o": "Seguimiento a 3 días"}, {"m": "Muestra trabajo WhatsApp", "a": "Comparte pieza", "j": "Recibir validación", "c": "WhatsApp", "e": "Bajo", "em": "😃 ¡Wow!", "n": "+6", "o": "Responder con tips"}, {"m": "Publica en TikTok", "a": "Sube primer video", "j": "Mostrar emprendimiento", "c": "TikTok", "e": "Medio", "em": "😃 ¡Wow!", "n": "+7", "o": "Repost C4V oficial"}]}, {"etapa": "Postventa", "rows": [{"m": "Nota problema corte", "a": "Detecta falla", "j": "Resolver incidente", "c": "Taller", "e": "Medio", "em": "🙁 Mala", "n": "+4", "o": "Guía solución rápida"}, {"m": "Escribe a soporte", "a": "Envía mensaje", "j": "Pedir ayuda", "c": "WhatsApp", "e": "Medio", "em": "🙁 Mala", "n": "+4", "o": "Respuesta &lt;5 min"}, {"m": "Manda foto/video", "a": "Adjunta evidencia", "j": "Explicar problema", "c": "WhatsApp", "e": "Medio", "em": "🙁 Mala", "n": "+4", "o": "Formato claro de reporte"}, {"m": "Recibe instrucciones", "a": "Lee pasos", "j": "Seguir solución", "c": "WhatsApp", "e": "Medio", "em": "🙂 Funcional", "n": "+5", "o": "Tutorial paso a paso"}, {"m": "Ajusta máquina", "a": "Sigue indicaciones", "j": "Reparar solo", "c": "Taller", "e": "Alto", "em": "😊 Buena", "n": "+6", "o": "Videoguías prácticas"}, {"m": "Problema persiste", "a": "No se resuelve", "j": "Evitar parálisis", "c": "Taller", "e": "Alto", "em": "😡 Lo odio", "n": "+2", "o": "Escalamiento técnico"}, {"m": "Videollamada técnico", "a": "Conecta soporte", "j": "Reparar acompañado", "c": "WhatsApp Video", "e": "Medio", "em": "🙂 Funcional", "n": "+5", "o": "Agenda inmediata"}, {"m": "Solicita repuesto", "a": "Pide pieza", "j": "Reemplazar componente", "c": "WhatsApp", "e": "Medio", "em": "🙁 Mala", "n": "+4", "o": "Stock local inmediato"}, {"m": "Paga repuesto", "a": "Hace pago", "j": "Cerrar proceso", "c": "WhatsApp/Transferencia", "e": "Medio", "em": "🙂 Funcional", "n": "+5", "o": "Proceso simple pago"}, {"m": "Evalúa soporte", "a": "Reflexiona experiencia", "j": "Decidir recomendar", "c": "WhatsApp/Google", "e": "Bajo", "em": "😊 Buena", "n": "+6", "o": "Encuesta NPS"}]}, {"etapa": "Fidelización", "rows": [{"m": "Inscribirse curso online", "a": "Registra datos", "j": "Aprender más", "c": "Web C4V", "e": "Medio", "em": "😃 ¡Wow!", "n": "+7", "o": "Cursos accesibles"}, {"m": "Participa capacitación", "a": "Toma clase", "j": "Mejorar habilidades", "c": "Zoom/Presencial", "e": "Medio", "em": "😃 ¡Wow!", "n": "+7", "o": "Entrenamientos prácticos"}, {"m": "Recibe certificado", "a": "Descarga documento", "j": "Validar conocimiento", "c": "Email/Web", "e": "Bajo", "em": "😃 ¡Wow!", "n": "+8", "o": "Certificados digitales"}, {"m": "Unirse a comunidad", "a": "Accede a grupo", "j": "Sentirse acompañado", "c": "WhatsApp/Telegram", "e": "Bajo", "em": "😊 Buena", "n": "+6", "o": "Grupo activo"}, {"m": "Comparte dudas", "a": "Hace preguntas", "j": "Resolver problemas", "c": "WhatsApp/Telegram", "e": "Medio", "em": "😊 Buena", "n": "+6", "o": "Soporte entre pares"}, {"m": "Publica trabajos TikTok", "a": "Sube videos", "j": "Mostrar resultados", "c": "TikTok", "e": "Medio", "em": "😃 ¡Wow!", "n": "+7", "o": "Repost C4V oficial"}, {"m": "Responde dudas otros", "a": "Ayuda comunidad", "j": "Ganar reputación", "c": "WhatsApp/Telegram", "e": "Medio", "em": "😃 ¡Wow!", "n": "+7", "o": "Reconocimiento clientes"}, {"m": "Recomienda amigo", "a": "Sugiere C4V", "j": "Expandir red", "c": "WhatsApp/Boca a boca", "e": "Bajo", "em": "😃 ¡Wow!", "n": "+8", "o": "Programa referidos"}, {"m": "Amigo compra", "a": "Confirma recomendación", "j": "Validar confianza", "c": "WhatsApp", "e": "Medio", "em": "😃 ¡Wow!", "n": "+8", "o": "Premio por referido"}, {"m": "Compra segunda máquina", "a": "Repite proceso", "j": "Escalar negocio", "c": "WhatsApp/Showroom", "e": "Alto", "em": "😃 ¡Wow!", "n": "+9", "o": "Descuentos fidelidad"}, {"m": "Participa feria con C4V", "a": "Muestra productos", "j": "Exposición pública", "c": "Feria", "e": "Alto", "em": "😃 ¡Wow!", "n": "+8", "o": "Apoyo logístico C4V"}, {"m": "Caso éxito publicado", "a": "Comparte historia", "j": "Validar logro", "c": "Web/TikTok", "e": "Bajo", "em": "😃 ¡Wow!", "n": "+9", "o": "Historias inspiradoras"}, {"m": "Muestra taller en crecimiento", "a": "Comparte fotos", "j": "Ganar credibilidad", "c": "TikTok/Facebook", "e": "Medio", "em": "😃 ¡Wow!", "n": "+8", "o": "Repost oficial"}, {"m": "Recibe descuento referido", "a": "Aprovecha beneficio", "j": "Ahorrar inversión", "c": "WhatsApp", "e": "Medio", "em": "😃 ¡Wow!", "n": "+7", "o": "Promos exclusivas"}, {"m": "Se siente parte comunidad", "a": "Comparte logros", "j": "Pertenecer", "c": "WhatsApp/TikTok", "e": "Bajo", "em": "😃 ¡Wow!", "n": "+9", "o": "Eventos exclusivos"}]}];
+
+  function nivelNum(s){ const m=String(s).match(/-?\d+/); return m?parseInt(m[0]):0; }
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+  function renderGeneral(){
+    if(!Array.isArray(JOURNEY)||!JOURNEY.length) return;
+    const stages = JOURNEY.map(st=>{
+      const nums = st.rows.map(r=>nivelNum(r.n));
+      const avg = nums.length? nums.reduce((a,b)=>a+b,0)/nums.length : 0;
+      return {name:st.etapa, avg, rows:st.rows};
+    });
+    const W=Math.max(720, stages.length*150), H=170, pad=46;
+    const maxv=9, minv=2;
+    const x=i=> pad + i*((W-2*pad)/(Math.max(1,stages.length-1)));
+    const y=v=> (H-26) - ((Math.min(maxv,Math.max(minv,v))-minv)/(maxv-minv))*(H-52);
+    let pts = stages.map((s,i)=>`${x(i).toFixed(0)},${y(s.avg).toFixed(0)}`).join(' ');
+    let svg = `<svg width="${W}" height="${H+28}" style="max-width:100%;display:block">`;
+    svg += `<polyline points="${pts}" fill="none" stroke="var(--red)" stroke-width="3" stroke-linejoin="round"/>`;
+    stages.forEach((s,i)=>{
+      svg += `<circle cx="${x(i).toFixed(0)}" cy="${y(s.avg).toFixed(0)}" r="5" fill="var(--red2)"/>`;
+      svg += `<text x="${x(i).toFixed(0)}" y="${(y(s.avg)-12).toFixed(0)}" fill="#fff" font-size="12" text-anchor="middle">+${s.avg.toFixed(1)}</text>`;
+      svg += `<text x="${x(i).toFixed(0)}" y="${H+16}" fill="rgba(255,255,255,.6)" font-size="11" text-anchor="middle">${esc(s.name).slice(0,16)}</text>`;
+    });
+    svg += `</svg>`;
+    document.getElementById('jcurve').innerHTML = '<h3>Curva emocional — nivel de experiencia promedio por etapa (sube = mejor)</h3>'+svg;
+
+    const g = document.getElementById('jgeneral'); g.className='jflow';
+    let html='';
+    stages.forEach((s,i)=>{
+      const counts={}; s.rows.forEach(r=>{const e=r.em||''; counts[e]=(counts[e]||0)+1;});
+      const dom = (Object.entries(counts).sort((a,b)=>b[1]-a[1])[0]||[''])[0];
+      const ops = s.rows.slice().sort((a,b)=>nivelNum(a.n)-nivelNum(b.n)).slice(0,2).map(r=>r.o).filter(Boolean);
+      if(i>0) html += '<div class="jarrow">→</div>';
+      html += `<div class="stage"><div class="step">0${i+1}</div><div class="sn">${esc(s.name)}</div>
+        <div class="row"><span class="k">Momentos:</span> ${s.rows.length}</div>
+        <div class="row"><span class="k">Ánimo:</span> ${esc(dom)}</div>
+        <div class="auto"><b>Oportunidad</b><br>${ops.map(o=>'• '+esc(o)).join('<br>')||'—'}</div></div>`;
+    });
+    g.innerHTML = html;
+  }
+
+  let curStage=0;
+  function renderDetalleNav(){
+    const nav=document.getElementById('jstagenav'); nav.innerHTML='';
+    JOURNEY.forEach((st,i)=>{
+      const b=document.createElement('button'); b.textContent=`0${i+1} · ${st.etapa}`;
+      if(i===curStage) b.classList.add('on');
+      b.addEventListener('click',()=>{curStage=i; renderDetalleNav(); renderDetalleTable();});
+      nav.appendChild(b);
+    });
+  }
+  function renderDetalleTable(){
+    const st=JOURNEY[curStage]; if(!st) return;
+    const rows=st.rows, N=rows.length, colW=160;
+    const W=N*colW, H=112, top=20, bot=24;
+    const nv=rows.map(r=>nivelNum(r.n));
+    const mx=Math.max(9,...nv), mn=Math.min(2,...nv);
+    const x=i=> i*colW+colW/2;
+    const y=v=> (H-bot)-((v-mn)/((mx-mn)||1))*(H-top-bot);
+    let pts=nv.map((v,i)=>`${x(i).toFixed(0)},${y(v).toFixed(0)}`).join(' ');
+    let svg=`<svg width="${W}" height="${H}" style="display:block">`;
+    svg+=`<polyline points="${pts}" fill="none" stroke="var(--red)" stroke-width="2.5" stroke-linejoin="round"/>`;
+    nv.forEach((v,i)=>{ svg+=`<circle cx="${x(i).toFixed(0)}" cy="${y(v).toFixed(0)}" r="4" fill="var(--red2)"/><text x="${x(i).toFixed(0)}" y="${(y(v)-8).toFixed(0)}" fill="#fff" font-size="10" text-anchor="middle">+${v}</text>`; });
+    svg+=`</svg>`;
+    let cols='';
+    rows.forEach(r=>{
+      cols+=`<div class="cjm-col">
+        <div class="cjm-m">${esc(r.m)}</div>
+        <div class="cjm-emo">${esc(r.em)}</div>
+        <div class="cjm-cell"><span class="lbl">Actividad</span>${esc(r.a)}</div>
+        <div class="cjm-cell"><span class="lbl">Busca (job)</span>${esc(r.j)}</div>
+        <div class="cjm-cell"><span class="lbl">Canal</span>${esc(r.c)}</div>
+        <div class="cjm-cell"><span class="lbl">Esfuerzo</span>${esc(r.e)}</div>
+        <div class="cjm-cell op"><span class="lbl">Oportunidad</span>${esc(r.o)}</div>
+      </div>`;
+    });
+    document.getElementById('jtable').innerHTML =
+      `<div style="overflow-x:auto"><div style="min-width:${W}px">
+        <div class="cjm-curvewrap"><div style="font-size:11px;color:var(--mut);padding:6px 8px">Curva emocional (nivel por momento)</div>${svg}</div>
+        <div class="cjm-cols">${cols}</div>
+      </div></div>`;
+  }
+
+  try{ renderGeneral(); renderDetalleNav(); renderDetalleTable(); }catch(e){ console.error('journey render',e); }
+
+  // ===== Diagramas de flujo por fase (generados, con área responsable) =====
+  const AREAS = {
+    "Servicio al Cliente":"#3aa0ff",
+    "Administración y Finanzas":"#E0B978",
+    "Servicio Técnico":"#2bbf7a",
+    "Logística":"#a78bfa",
+    "Marketing":"#ff8f6b"
+  };
+  const A={SAC:"Servicio al Cliente",AF:"Administración y Finanzas",ST:"Servicio Técnico",LO:"Logística",MK:"Marketing"};
+  const FLOWS = {
+    "Compra": {note:"Compra e importación desde China (RUIDA). Carril: Administración y Finanzas.", nodes:[
+      {t:"start",x:"Inicio",ar:A.AF},
+      {t:"box",x:"Conversación por Alibaba",ar:A.AF},
+      {t:"box",x:"Pedir requisitos + cotización FOB",ar:A.AF},
+      {t:"dec",x:"¿De acuerdo?",br:{l:"No",t:"Buscar otro proveedor"},ar:A.AF},
+      {t:"box",x:"Transferencia internacional",fl:"Sí",ar:A.AF},
+      {t:"box",x:"Enviar boucher al proveedor",ar:A.AF},
+      {t:"box",x:"Trasbordo con agencia de aduanas",ar:A.LO},
+      {t:"end",x:"Archivar → Odoo",ar:A.AF}
+    ]},
+    "Recepción": {note:"Recepción de la mercadería importada (no del lead). Carriles: Admin y Logística.", nodes:[
+      {t:"start",x:"Inicio",ar:A.AF},
+      {t:"box",x:"Coordinar desaduanaje",ar:A.AF},
+      {t:"box",x:"Informar a depósito + agendar personal",ar:A.AF},
+      {t:"box",x:"Preparar etiquetas",ar:A.LO},
+      {t:"box",x:"Almacén, montacarga y transporte",ar:A.LO},
+      {t:"box",x:"Guía de remisión (Bulcano)",ar:A.AF},
+      {t:"box",x:"Descarga los bienes",ar:A.LO},
+      {t:"dec",x:"¿Abastece almacén?",br:{l:"No",t:"Reprogramar"},ar:A.LO},
+      {t:"box",x:"Reporta trabajo concluido",fl:"Sí",ar:A.LO},
+      {t:"box",x:"Confirma y paga proveedores",ar:A.AF},
+      {t:"end",x:"Archivar actividad → Odoo",ar:A.AF}
+    ]},
+    "Marketing": {note:"En tu diagrama el carril Marketing tenía notas; aquí el ciclo semanal del equipo (Jair).", nodes:[
+      {t:"start",x:"Sábado: reunión creativa",ar:A.MK},
+      {t:"box",x:"Define grilla +2 semanas (Jair)",ar:A.MK},
+      {t:"box",x:"Lunes: guiones (Lucia)",ar:A.MK},
+      {t:"box",x:"Mar/Jue: grabación + edición",ar:A.MK},
+      {t:"dec",x:"¿Aprobado?",br:{l:"No",t:"Ajustes"},ar:A.MK},
+      {t:"end",x:"Publica → genera leads",fl:"Sí",ar:A.MK}
+    ]},
+    "Venta": {note:"Venta — del lead al cierre y depósito. Carril: Servicio al Cliente.", nodes:[
+      {t:"start",x:"Inicio",ar:A.SAC},
+      {t:"box",x:"Recibir lead",ar:A.SAC},
+      {t:"box",x:"Gestionar lead",ar:A.SAC},
+      {t:"dec",x:"¿Interesado?",br:{l:"No",t:"Seguimiento (loop)"},ar:A.SAC},
+      {t:"box",x:"Cotización + informar al cliente",fl:"Sí",ar:A.SAC},
+      {t:"dec",x:"¿Cierre?",br:{l:"No",t:"Seguimiento (loop)"},ar:A.SAC},
+      {t:"box",x:"Cliente deposita",fl:"Sí",ar:A.SAC},
+      {t:"box",x:"Enviar formulario a confirmaciones",ar:A.SAC},
+      {t:"box",x:"Informar y enviar al cliente",ar:A.SAC},
+      {t:"end",x:"Archivar venta → Odoo",ar:A.SAC}
+    ]},
+    "Despacho": {note:"Despacho, transporte e instalación. Carriles: Servicio Técnico, Logística y Admin.", nodes:[
+      {t:"start",x:"Inicio",ar:A.SAC},
+      {t:"box",x:"Coordinar fecha de entrega",ar:A.SAC},
+      {t:"box",x:"Buscar ingeniero (calendario)",ar:A.ST},
+      {t:"dec",x:"¿Máquina disponible?",br:{l:"No",t:"Esperar disponibilidad"},ar:A.ST},
+      {t:"box",x:"Registrar salida + preparar máquina",fl:"Sí",ar:A.ST},
+      {t:"box",x:"Mandar números de serie",ar:A.ST},
+      {t:"box",x:"Coordinar con transportista",ar:A.LO},
+      {t:"box",x:"Entregar a destino + instalar",ar:A.ST},
+      {t:"box",x:"Factura + guía de remisión",ar:A.AF},
+      {t:"end",x:"Enviar verificación y factura → Odoo",ar:A.AF}
+    ]},
+    "Capacitación": {note:"Capacitación de uso + emisión de garantía. Carril: Servicio Técnico.", nodes:[
+      {t:"start",x:"Inicio",ar:A.ST},
+      {t:"box",x:"Capacitación presencial",ar:A.ST},
+      {t:"dec",x:"¿Entendió?",br:{l:"No",t:"Video llamada / refuerzo"},ar:A.ST},
+      {t:"box",x:"Llenar garantía + ficha técnica",fl:"Sí",ar:A.ST},
+      {t:"box",x:"Emitir garantía + ficha técnica",ar:A.AF},
+      {t:"end",x:"Archivar → Odoo",ar:A.AF}
+    ]},
+    "Pos-venta": {note:"Tu nota: 'calendario de ingenieros para evitar cruce de empresas' = el Coordinador de Soporte (prioridad #1).", nodes:[
+      {t:"start",x:"Cliente reporta falla (grupo WA)",ar:A.SAC},
+      {t:"box",x:"Buscar ingeniero (calendario)",ar:A.ST},
+      {t:"dec",x:"¿Ingeniero PE libre?",br:{l:"No",t:"Deriva a Bolivia (Aldo/Gustavo)"},ar:A.ST},
+      {t:"box",x:"Asigna ingeniero al caso",fl:"Sí",ar:A.ST},
+      {t:"box",x:"Atiende y resuelve",ar:A.ST},
+      {t:"dec",x:"¿Resuelto?",br:{l:"No",t:"Escala a Sebastián"},ar:A.ST},
+      {t:"end",x:"Reporta + archiva → Odoo",fl:"Sí",ar:A.ST}
+    ]}
+  };
+  const FLOW_ORDER = ["Compra","Recepción","Marketing","Venta","Despacho","Capacitación","Pos-venta"];
+
+  function fcWrap(t){ t=String(t); if(t.length<=26) return [t];
+    const w=t.split(' '); let a='',b='';
+    for(const x of w){ if(!b && (a+' '+x).trim().length<=24) a=(a+' '+x).trim(); else b=(b+' '+x).trim(); }
+    return b?[a,b]:[a]; }
+
+  function renderFlow(name){
+    const flow=FLOWS[name]; if(!flow) return;
+    const cx=210, bw=240, bx=cx-bw/2, Wsvg=640; let y=16, parts=[], prevBottom=null;
+    const used=[];
+    flow.nodes.forEach(nd=>{
+      let topY=y, h; const col=AREAS[nd.ar]||"#888"; if(nd.ar && !used.includes(nd.ar)) used.push(nd.ar);
+      if(prevBottom!=null){
+        let lbl = nd.fl? `<text class="fc-lbl" x="${cx+9}" y="${(prevBottom+(topY-prevBottom)/2+4).toFixed(0)}">${nd.fl}</text>`:'';
+        parts.push(`<line class="fc-line" x1="${cx}" y1="${prevBottom}" x2="${cx}" y2="${topY}" marker-end="url(#ah)"/>${lbl}`);
+      }
+      if(nd.t==="dec"){
+        h=88; const cyd=y+44;
+        parts.push(`<polygon class="fc-dec" points="${cx},${y} ${cx+128},${cyd} ${cx},${y+h} ${cx-128},${cyd}"/>`);
+        parts.push(`<circle cx="${cx}" cy="${y+9}" r="5" fill="${col}"/>`);
+        const ls=fcWrap(nd.x); ls.forEach((ln,i)=>parts.push(`<text class="fc-t fc-c" x="${cx}" y="${(cyd-3-(ls.length-1)*7+i*14).toFixed(0)}">${ln}</text>`));
+        if(nd.br){
+          parts.push(`<text class="fc-lbl" x="${cx+135}" y="${cyd-7}">${nd.br.l}</text>`);
+          parts.push(`<line class="fc-line" x1="${cx+128}" y1="${cyd}" x2="408" y2="${cyd}" marker-end="url(#ah)"/>`);
+          parts.push(`<rect class="fc-br" x="410" y="${cyd-23}" width="200" height="46" rx="10"/>`);
+          const bl=fcWrap(nd.br.t); bl.forEach((ln,i)=>parts.push(`<text class="fc-t fc-c" x="510" y="${(cyd-2-(bl.length-1)*7+i*14).toFixed(0)}" style="font-size:10.5px">${ln}</text>`));
+        }
+      } else {
+        const se=(nd.t==="start"||nd.t==="end"); h=nd.sub?54:46;
+        parts.push(`<rect class="${se?'fc-start':'fc-box'}" x="${bx}" y="${y}" width="${bw}" height="${h}" rx="${se?22:10}"/>`);
+        parts.push(`<rect x="${bx}" y="${y}" width="6" height="${h}" rx="3" fill="${col}"/>`);
+        parts.push(`<text class="fc-t fc-c" x="${cx}" y="${(y+(nd.sub?21:27)).toFixed(0)}">${nd.x}</text>`);
+        if(nd.sub) parts.push(`<text class="fc-c" x="${cx}" y="${y+38}" style="fill:rgba(255,255,255,.6);font-size:10px">${nd.sub}</text>`);
+      }
+      prevBottom=topY+h; y=prevBottom+30;
+    });
+    const svg=`<svg viewBox="0 0 ${Wsvg} ${y}" width="100%" style="max-width:660px"><defs><marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#F9020B"/></marker></defs>${parts.join('')}</svg>`;
+    const legend=`<div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:12px;font-size:12px">`+
+      used.map(a=>`<span style="display:flex;align-items:center;gap:6px"><span style="width:13px;height:13px;border-radius:3px;background:${AREAS[a]};display:inline-block"></span>${a}</span>`).join('')+`</div>`;
+    document.getElementById('flowchart').innerHTML=legend+svg;
+    document.getElementById('flownote').innerHTML=flow.note||'';
+  }
+  let curFlow=0;
+  function renderFlowNav(){
+    const nav=document.getElementById('flownav'); if(!nav) return; nav.innerHTML='';
+    FLOW_ORDER.forEach((nm,i)=>{ const b=document.createElement('button'); b.textContent=nm; if(i===curFlow)b.classList.add('on');
+      b.addEventListener('click',()=>{curFlow=i; renderFlowNav(); renderFlow(nm);}); nav.appendChild(b); });
+  }
+  try{ renderFlowNav(); renderFlow(FLOW_ORDER[0]); }catch(e){ console.error('flow render',e); }
+
+
+  // ===== Service Blueprint =====
+  const BP_PHASES = ["Atraer","Captar lead","Vender","Comprar / Importar","Despachar / Instalar","Capacitar","Posventa / Soporte"];
+  const BP_LANES = [
+    {k:"Canal / evidencia", key:"canal"},
+    {k:"Cliente hace", key:"cli", cls:"cli"},
+    {k:"— línea de interacción —", sep:true},
+    {k:"Frontstage (quién atiende)", key:"front"},
+    {k:"— línea de visibilidad —", sep:true},
+    {k:"Backstage (interno, invisible)", key:"back"},
+    {k:"Sistemas de soporte", key:"sys"},
+    {k:"🤖 Dónde automatiza", key:"auto", autorow:true}
+  ];
+  const BP = {
+    "Atraer":{canal:"TikTok / IG / FB, lives, ads",cli:"Ve contenido, comenta, guarda",front:"Equipo creativo (Jair) responde",back:"Grilla, guiones, grabación, edición",sys:"Meta / TikTok, Canva",auto:"Content Scheduler"},
+    "Captar lead":{canal:"WhatsApp / DM",cli:"Escribe \"info / precio\"",front:"Bot da bienvenida → Melva / Jhovana",back:"Bot clasifica (ciudad, modelo) y reparte por orden",sys:"ManyChat → Odoo (a mano)",auto:"Lead Catcher + integrar ManyChat↔Odoo"},
+    "Vender":{canal:"WhatsApp, llamada, showroom",cli:"Pregunta precio, pide cotización, visita",front:"Vendedora (Melva / Jhovana); Irene en grandes",back:"Arma cotización en Odoo, seguimiento manual",sys:"Odoo CRM, WhatsApp",auto:"Follow-up Bot + Cotizador Rápido"},
+    "Comprar / Importar":{canal:"— (no visible al cliente)",cli:"Espera su máquina",front:"Sebastian / Jose con RUIDA",back:"Pedido Alibaba, transferencia int'l, aduanas, almacén",sys:"Alibaba, banco, Odoo, aduanas",auto:"Monitor de inventario + alertas de stock"},
+    "Despachar / Instalar":{canal:"Entrega a domicilio / taller",cli:"Recibe, firma conformidad, ve la instalación",front:"Ingeniero (Josafat / Gerson), transportista",back:"Verifica pago, asigna ingeniero (calendario), guía de remisión, nº serie",sys:"Odoo Planning, banco, transportista",auto:"Verificación antifraude (Toby) antes de despachar"},
+    "Capacitar":{canal:"Presencial + C4V School",cli:"Aprende a operar, toma curso, primer corte",front:"Ingeniero enseña; C4V School",back:"Emite garantía + ficha técnica",sys:"WordPress / Tutor LMS, Odoo",auto:"Bot Soporte L1 + CeVi"},
+    "Posventa / Soporte":{canal:"Grupo WhatsApp por cliente",cli:"Reporta falla, manda foto / video",front:"Ingeniero asignado responde",back:"❌ Sin coordinador: se pasan la bola, consultan calendario, escalan",sys:"WhatsApp, Odoo Helpdesk",auto:"Coordinador de Soporte (#1) + Bot L1 + CeVi"}
+  };
+  function renderBlueprint(){
+    const t=document.getElementById('bptable'); if(!t) return;
+    let html='<thead><tr><th class="lane"></th>'+BP_PHASES.map(p=>`<th>${esc(p)}</th>`).join('')+'</tr></thead><tbody>';
+    BP_LANES.forEach(L=>{
+      if(L.sep){ html+=`<tr class="sep"><td>${esc(L.k)}</td><td colspan="${BP_PHASES.length}">${esc(L.k)}</td></tr>`; return; }
+      html+=`<tr class="${L.autorow?'auto-row':''}"><td class="lane">${L.k}</td>`+
+        BP_PHASES.map(p=>`<td class="${L.cls||''}">${esc((BP[p]||{})[L.key]||'—')}</td>`).join('')+'</tr>';
+    });
+    t.innerHTML=html+'</tbody>';
+  }
+  try{ renderBlueprint(); }catch(e){ console.error('blueprint',e); }
+
+  // ===== Matriz impacto x esfuerzo =====
+  const MTX=[
+    {n:"Follow-up Bot",e:1.5,i:4.3,r:15,c:"#f0b429"},
+    {n:"Coordinador Soporte",e:3.0,i:4.7,r:18,c:"#ff5a52"},
+    {n:"Integrar ManyChat↔Odoo",e:2.3,i:4.0,r:14,c:"#ff8f6b"},
+    {n:"CeVi",e:4.0,i:4.3,r:16,c:"#2bbf7a"},
+    {n:"Cotizador Rápido",e:2.0,i:3.2,r:11,c:"#3aa0ff"},
+    {n:"Bot Soporte L1",e:3.0,i:3.0,r:11,c:"#3aa0ff"},
+    {n:"Toby (antifraude)",e:3.4,i:3.0,r:11,c:"#E0B978"},
+    {n:"Content Scheduler",e:1.6,i:2.3,r:10,c:"#a78bfa"}
+  ];
+  function renderMatrix(){
+    const el=document.getElementById('matrix'); if(!el) return;
+    const W=660,H=430,pad=58;
+    const px=v=> pad + (v/5)*(W-2*pad);
+    const py=v=> (H-pad) - (v/5)*(H-2*pad);
+    const mx=px(2.5), my=py(2.5);
+    let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:680px;display:block">`;
+    s+=`<rect x="${pad}" y="${pad}" width="${mx-pad}" height="${my-pad}" fill="rgba(43,191,122,.09)"/>`;
+    s+=`<rect x="${mx}" y="${pad}" width="${W-pad-mx}" height="${my-pad}" fill="rgba(240,180,41,.07)"/>`;
+    s+=`<rect x="${pad}" y="${my}" width="${mx-pad}" height="${H-pad-my}" fill="rgba(255,255,255,.025)"/>`;
+    s+=`<rect x="${mx}" y="${my}" width="${W-pad-mx}" height="${H-pad-my}" fill="rgba(255,90,82,.05)"/>`;
+    s+=`<text x="${pad+8}" y="${pad+16}" fill="#2bbf7a" font-size="11" font-weight="700">QUICK WINS — empieza aquí</text>`;
+    s+=`<text x="${W-pad-8}" y="${pad+16}" fill="#f0b429" font-size="11" font-weight="700" text-anchor="end">PROYECTOS GRANDES — planifica</text>`;
+    s+=`<text x="${pad+8}" y="${H-pad-8}" fill="rgba(255,255,255,.4)" font-size="10.5">rellenos (bajo impacto)</text>`;
+    s+=`<text x="${W-pad-8}" y="${H-pad-8}" fill="rgba(255,90,82,.6)" font-size="10.5" text-anchor="end">evitar / dejar al final</text>`;
+    s+=`<line x1="${mx}" y1="${pad}" x2="${mx}" y2="${H-pad}" stroke="rgba(255,255,255,.18)" stroke-dasharray="4 4"/>`;
+    s+=`<line x1="${pad}" y1="${my}" x2="${W-pad}" y2="${my}" stroke="rgba(255,255,255,.18)" stroke-dasharray="4 4"/>`;
+    s+=`<line x1="${pad}" y1="${pad}" x2="${pad}" y2="${H-pad}" stroke="rgba(255,255,255,.35)"/>`;
+    s+=`<line x1="${pad}" y1="${H-pad}" x2="${W-pad}" y2="${H-pad}" stroke="rgba(255,255,255,.35)"/>`;
+    s+=`<text x="${W/2}" y="${H-16}" fill="rgba(255,255,255,.6)" font-size="11.5" text-anchor="middle">Esfuerzo / complejidad →</text>`;
+    s+=`<text x="18" y="${H/2}" fill="rgba(255,255,255,.6)" font-size="11.5" text-anchor="middle" transform="rotate(-90 18 ${H/2})">Impacto en el negocio →</text>`;
+    MTX.forEach(d=>{
+      const x=px(d.e), y=py(d.i);
+      s+=`<circle cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${d.r}" fill="${d.c}" fill-opacity="0.28" stroke="${d.c}" stroke-width="1.6"/>`;
+      s+=`<text x="${x.toFixed(0)}" y="${(y+3).toFixed(0)}" fill="#fff" font-size="10.5" font-weight="700" text-anchor="middle">${esc(d.n)}</text>`;
+    });
+    s+=`</svg>`;
+    el.innerHTML=s;
+  }
+  try{ renderMatrix(); }catch(e){ console.error('matrix',e); }
+
+  const btns = document.querySelectorAll('nav button');
+  const secs = document.querySelectorAll('section');
+  btns.forEach(b => b.addEventListener('click', () => {
+    btns.forEach(x => x.classList.remove('active'));
+    secs.forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    document.getElementById(b.dataset.s).classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }));
+</script>
+</body>
+</html>
