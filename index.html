@@ -48,6 +48,8 @@
   .t-ok{background:rgba(43,191,122,.15);color:var(--ok);border:1px solid rgba(43,191,122,.4)}
   .t-warn{background:rgba(240,180,41,.15);color:var(--warn);border:1px solid rgba(240,180,41,.4)}
   .t-crit{background:rgba(255,90,82,.15);color:var(--crit);border:1px solid rgba(255,90,82,.45)}
+  .t-mut{background:rgba(255,255,255,.07);color:var(--mut);border:1px solid var(--line)}
+  .t-proj{background:rgba(58,160,255,.14);color:#79c0ff;border:1px solid rgba(58,160,255,.4)}
 
   /* Organigrama */
   .org-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:14px}
@@ -202,7 +204,9 @@
   <!-- EMPRESAS -->
   <section id="empresas">
     <h2>El grupo de <span class="em">empresas</span></h2>
-    <p class="sub">C4V opera como un grupo: una marca comercial con varias entidades legales por país, la sede de compras en China, la academia y la línea de formación. Todo se gestiona desde un mismo Odoo (BD <b>c4v_migrado</b>).</p>
+    <p class="sub">C4V opera como un grupo: una marca comercial con varias <b>entidades legales</b> por país y la sede de compras en China. Aparte están los <b>proyectos y líneas</b> (la academia, el coaching) que no son empresas separadas. Todo se gestiona desde un mismo Odoo (BD <b>c4v_migrado</b>).</p>
+
+    <h3 style="margin:4px 0 10px;font-size:15px;color:var(--gold)">Entidades legales</h3>
     <div class="grid ecos">
       <div class="co"><div class="cn">C4V LÁSER S.C.R.L. <span class="tag t-ok">Principal</span></div><div class="cc">Perú — marca comercial y operación central.</div></div>
       <div class="co"><div class="cn">KUY IMPORTACIONES S.A.C.</div><div class="cc">Perú — entidad de importaciones.</div></div>
@@ -210,10 +214,15 @@
       <div class="co"><div class="cn">MAQUINARIA INTELIGENTE CHILE LTDA</div><div class="cc flag">🇨🇱 Chile — operación local.</div></div>
       <div class="co"><div class="cn">MAQUINARIASMART S.A.S.</div><div class="cc flag">🇪🇨 Ecuador — operación local.</div></div>
       <div class="co"><div class="cn">SHENZHEN JCS TECHNOLOGY</div><div class="cc flag">🇨🇳 China — sede de compras (relación RUIDA).</div></div>
-      <div class="co"><div class="cn">C4V School</div><div class="cc">Academia online (cursos láser, estilo Duolingo). Mascota: CeVi 🐂.</div></div>
-      <div class="co"><div class="cn">Coaching / Formación — Irene Velasco</div><div class="cc">Línea de coaching y formación de emprendedores.</div></div>
+      <div class="co"><div class="cn">C4V INGENIERÍA Y SERVICIOS SRL <span class="tag t-mut">sin uso</span></div><div class="cc">Perú — entidad antigua. Sigue existiendo legalmente, pero no se opera por ella.</div></div>
     </div>
-    <div class="note">Nota: en Odoo también existen entidades antiguas/de prueba (C4V Ingeniería — no usar, C4V Demo — pruebas) que no forman parte de la operación real.</div>
+
+    <h3 style="margin:22px 0 10px;font-size:15px;color:var(--gold)">Proyectos y líneas <span style="font-weight:400;color:var(--mut);font-size:12px">(no son empresas)</span></h3>
+    <div class="grid ecos">
+      <div class="co"><div class="cn">C4V School <span class="tag t-proj">Proyecto</span></div><div class="cc">Academia online de cursos láser (estilo Duolingo). Mascota: CeVi 🐂. Es un proyecto, no una entidad legal.</div></div>
+      <div class="co"><div class="cn">Coaching / Formación — Irene Velasco <span class="tag t-proj">Línea</span></div><div class="cc">Línea de coaching y formación de emprendedores.</div></div>
+    </div>
+    <div class="note">Nota: en Odoo también existe <b>C4V Demo</b> (entorno de pruebas), que no forma parte de la operación real.</div>
   </section>
 
   <!-- ESTRATEGIA -->
