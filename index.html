@@ -17,7 +17,9 @@
   .bgwrap{position:fixed;inset:0;z-index:-1;background:
     radial-gradient(55% 40% at 50% 0%,rgba(249,2,11,.16),transparent 60%),
     linear-gradient(180deg,#161616,#0c0c0c 70%)}
-  header{max-width:1120px;margin:0 auto;padding:26px 24px 6px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  header{max-width:1120px;margin:0 auto;padding:46px 24px 6px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  .langtoggle{position:fixed;top:12px;right:16px;z-index:60;background:var(--panel);border:1px solid var(--line);color:#fff;border-radius:999px;padding:7px 13px;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+  .langtoggle:hover{border-color:var(--red);color:#fff}
   .brand{font-size:20px;font-weight:800;letter-spacing:-.3px}
   .brand b{color:var(--red)}
   .brand span{color:var(--mut);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:2px}
@@ -194,6 +196,7 @@
 </head>
 <body>
 <div class="bgwrap"></div>
+<a class="langtoggle" id="langtoggle" data-other="en.html" href="en.html" title="Switch to English / Cambiar a inglés">🌐 EN</a>
 
 <header>
   <div class="brand"><b>C4V</b> LÁSER <span>· Cómo funciona la empresa</span></div>
@@ -1120,13 +1123,19 @@
 
   const btns = document.querySelectorAll('nav button');
   const secs = document.querySelectorAll('section');
-  btns.forEach(b => b.addEventListener('click', () => {
-    btns.forEach(x => x.classList.remove('active'));
+  function _setTab(id){
+    btns.forEach(x => x.classList.toggle('active', x.dataset.s===id));
     secs.forEach(x => x.classList.remove('active'));
-    b.classList.add('active');
-    document.getElementById(b.dataset.s).classList.add('active');
-    window.scrollTo({top:0, behavior:'smooth'});
-  }));
+    var el=document.getElementById(id); if(el) el.classList.add('active');
+    var lt=document.getElementById('langtoggle'); if(lt && lt.dataset.other) lt.href = lt.dataset.other + '#' + id;
+    try{ history.replaceState(null,'',location.pathname+'#'+id); }catch(e){}
+  }
+  btns.forEach(b => b.addEventListener('click', () => { _setTab(b.dataset.s); window.scrollTo({top:0, behavior:'smooth'}); }));
+  (function(){
+    var h=(location.hash||'').slice(1);
+    if(h && document.getElementById(h) && document.querySelector('nav button[data-s="'+h+'"]')){ _setTab(h); }
+    else { var lt=document.getElementById('langtoggle'); if(lt && lt.dataset.other) lt.href = lt.dataset.other + '#resumen'; }
+  })();
 </script>
 </body>
 </html>
