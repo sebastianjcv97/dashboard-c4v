@@ -5,35 +5,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <title>C4V Láser — How the company works · Leadership Onboarding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Unbounded:wght@300..900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --red:#F9020B; --red2:#FF3B36; --reddeep:#9E0008;
-    --bg:#0f0f0f; --panel:#1b1b1b; --panel2:#232323; --line:rgba(255,255,255,.10);
-    --txt:#fff; --mut:rgba(255,255,255,.58); --gold:#E0B978;
+    --red:#C62828; --red2:#FF3B30; --redhover:#ff6b54; --reddeep:#9E0008;
+    --bg:#140d0d; --panel:#1c1111; --panel2:#261818; --line:rgba(242,232,217,.10);
+    --txt:#f2e8d9; --mut:#c9bba6; --meta:#8a7d6b; --gold:#E0B978;
+    --ease:cubic-bezier(0.25,1,0.5,1);
     --ok:#2bbf7a; --warn:#f0b429; --crit:#ff5a52;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",sans-serif;background:#0c0c0c;color:var(--txt);line-height:1.5}
+  body{font-family:'Manrope',-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",sans-serif;background:#140d0d;color:var(--txt);line-height:1.5}
   .bgwrap{position:fixed;inset:0;z-index:-1;background:
-    radial-gradient(55% 40% at 50% 0%,rgba(249,2,11,.16),transparent 60%),
-    linear-gradient(180deg,#161616,#0c0c0c 70%)}
+    radial-gradient(55% 40% at 50% 0%,rgba(255,59,48,.12),transparent 60%),
+    linear-gradient(180deg,#1a0f0f,#0e0808 70%)}
   header{max-width:1120px;margin:0 auto;padding:46px 24px 6px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
-  .langtoggle{position:fixed;top:12px;right:16px;z-index:60;background:var(--panel);border:1px solid var(--line);color:#fff;border-radius:999px;padding:7px 13px;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(0,0,0,.35)}
-  .langtoggle:hover{border-color:var(--red);color:#fff}
-  .brand{font-size:20px;font-weight:800;letter-spacing:-.3px}
+  .langtoggle{position:fixed;top:12px;right:16px;z-index:60;background:var(--panel);border:1px solid rgba(255,59,48,0.2);color:var(--txt);transition:border-color .25s var(--ease),color .25s var(--ease);border-radius:999px;padding:7px 13px;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+  .langtoggle:hover{border-color:#FF3B30;color:var(--txt)}
+  .brand{font-family:'Unbounded',sans-serif;font-size:18px;font-weight:800;letter-spacing:.2px}
   .brand b{color:var(--red)}
   .brand span{color:var(--mut);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:2px}
   .who{font-size:12px;color:var(--mut);text-align:right}
   .who b{color:var(--gold)}
   nav{max-width:1120px;margin:14px auto 0;padding:0 24px;display:flex;gap:8px;flex-wrap:wrap}
-  nav button{background:var(--panel);border:1px solid var(--line);color:var(--mut);padding:9px 15px;border-radius:999px;font:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:.2s}
-  nav button:hover{color:#fff}
-  nav button.active{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 6px 16px rgba(249,2,11,.3)}
+  nav button{background:var(--panel);border:1px solid rgba(255,59,48,0.16);color:var(--mut);padding:9px 15px;border-radius:999px;font:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:color .25s var(--ease),background .25s var(--ease),border-color .25s var(--ease),box-shadow .25s var(--ease)}
+  nav button:hover{color:var(--txt);border-color:var(--redhover)}
+  nav button.active{background:var(--red);border-color:var(--red);color:var(--txt);box-shadow:0 0 24px rgba(255,59,48,0.25)}
   main{max-width:1120px;margin:0 auto;padding:22px 24px 70px}
-  section{display:none;animation:fade .35s ease}
+  section{display:none;animation:fade .45s var(--ease)}
   section.active{display:block}
   @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
-  h2{font-size:24px;font-weight:800;margin-bottom:4px}
+  h2{font-family:'Unbounded',sans-serif;font-size:22px;font-weight:700;letter-spacing:.2px;margin-bottom:6px}
   h2 .em{color:var(--red)}
   .sub{color:var(--mut);font-size:14px;margin-bottom:22px;max-width:760px}
   .grid{display:grid;gap:14px}
@@ -43,20 +47,20 @@
   .kpi .l{font-size:12px;color:var(--mut);margin-top:2px}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
   .card h3{font-size:15px;font-weight:700;margin-bottom:8px}
-  .card.red{border-left:3px solid var(--red)}
+  .card.red{border-color:rgba(255,59,48,.45)}
   .muted{color:var(--mut);font-size:13px}
   .tag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:3px 8px;border-radius:999px;margin-left:6px;vertical-align:middle}
-  .t-new{background:rgba(249,2,11,.18);color:var(--red2);border:1px solid rgba(249,2,11,.45)}
+  .t-new{background:rgba(255,59,48,.18);color:var(--red2);border:1px solid rgba(255,59,48,.45)}
   .t-ok{background:rgba(43,191,122,.15);color:var(--ok);border:1px solid rgba(43,191,122,.4)}
   .t-warn{background:rgba(240,180,41,.15);color:var(--warn);border:1px solid rgba(240,180,41,.4)}
   .t-crit{background:rgba(255,90,82,.15);color:var(--crit);border:1px solid rgba(255,90,82,.45)}
-  .t-mut{background:rgba(255,255,255,.07);color:var(--mut);border:1px solid var(--line)}
+  .t-mut{background:rgba(242,232,217,.07);color:var(--mut);border:1px solid var(--line)}
   .t-proj{background:rgba(58,160,255,.14);color:#79c0ff;border:1px solid rgba(58,160,255,.4)}
 
   /* Organigrama */
   .org-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:14px}
   .person{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 16px;min-width:150px;text-align:center}
-  .person.dir{border-color:rgba(249,2,11,.5);background:linear-gradient(180deg,rgba(249,2,11,.08),var(--panel))}
+  .person.dir{border-color:rgba(255,59,48,.5);background:linear-gradient(180deg,rgba(255,59,48,.08),var(--panel))}
   .person .nm{font-weight:700;font-size:14px}
   .person .ro{font-size:11px;color:var(--mut);margin-top:2px}
   .branch-title{text-align:center;font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin:20px 0 8px}
@@ -79,7 +83,7 @@
   .stage .sn{font-size:15px;font-weight:700;margin:2px 0 8px}
   .stage .row{font-size:12px;margin:5px 0}
   .stage .k{color:var(--mut)}
-  .stage .auto{margin-top:9px;font-size:11.5px;background:rgba(249,2,11,.10);border:1px solid rgba(249,2,11,.3);border-radius:9px;padding:7px 9px;color:#ffd2cf}
+  .stage .auto{margin-top:9px;font-size:11.5px;background:rgba(255,59,48,.10);border:1px solid rgba(255,59,48,.3);border-radius:9px;padding:7px 9px;color:#ffd2cf}
   .stage .auto b{color:var(--red2)}
 
   /* Flujos */
@@ -91,14 +95,14 @@
   table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
   th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
   th{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--mut);font-weight:700}
-  tr:hover td{background:rgba(255,255,255,.02)}
+  tr:hover td{background:rgba(242,232,217,.02)}
   .prio{font-weight:800}
-  footer{max-width:1120px;margin:0 auto;padding:0 24px 40px;color:rgba(255,255,255,.35);font-size:12px;text-align:center}
+  footer{max-width:1120px;margin:0 auto;padding:0 24px 40px;color:var(--meta);font-size:12px;text-align:center}
   .note{background:rgba(224,185,120,.08);border:1px solid rgba(224,185,120,.3);border-radius:12px;padding:12px 14px;font-size:13px;color:#f0e3c8;margin:14px 0}
   .stagenav{display:flex;gap:7px;flex-wrap:wrap}
-  .stagenav button{background:var(--panel);border:1px solid var(--line);color:var(--mut);padding:7px 13px;border-radius:999px;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer;transition:.2s}
-  .stagenav button:hover{color:#fff}
-  .stagenav button.on{background:var(--red);border-color:var(--red);color:#fff}
+  .stagenav button{background:var(--panel);border:1px solid rgba(255,59,48,0.16);color:var(--mut);padding:7px 13px;border-radius:999px;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer;transition:color .25s var(--ease),background .25s var(--ease),border-color .25s var(--ease),box-shadow .25s var(--ease)}
+  .stagenav button:hover{color:var(--txt);border-color:var(--redhover)}
+  .stagenav button.on{background:var(--red);border-color:var(--red);color:var(--txt);box-shadow:0 0 24px rgba(255,59,48,0.25)}
   td.op{color:#ffd2cf}
   /* Flujo en línea (journey + proceso) */
   .jflow{display:flex;gap:0;overflow-x:auto;padding-bottom:12px;align-items:stretch}
@@ -108,45 +112,45 @@
   .cjm-cols{display:flex}
   .cjm-col{flex:0 0 160px;width:160px;border-right:1px solid var(--line)}
   .cjm-col:first-child{border-left:1px solid var(--line)}
-  .cjm-m{font-weight:700;font-size:11.5px;padding:8px;min-height:54px;border-bottom:1px solid var(--line);background:rgba(249,2,11,.08);color:#fff}
+  .cjm-m{font-weight:700;font-size:11.5px;padding:8px;min-height:54px;border-bottom:1px solid var(--line);background:rgba(255,59,48,.08);color:#f2e8d9}
   .cjm-emo{font-size:12px;padding:6px 8px;text-align:center;border-bottom:1px solid var(--line)}
-  .cjm-cell{font-size:11px;padding:6px 8px;border-bottom:1px solid var(--line);color:rgba(255,255,255,.82);line-height:1.35}
+  .cjm-cell{font-size:11px;padding:6px 8px;border-bottom:1px solid var(--line);color:rgba(242,232,217,.82);line-height:1.35}
   .cjm-cell .lbl{display:block;font-size:8.5px;text-transform:uppercase;letter-spacing:.4px;color:var(--mut);margin-bottom:2px}
   .cjm-cell.op{color:#ffd2cf}
   .cjm-curvewrap{border-bottom:1px solid var(--line)}
   /* Diagramas de flujo (flowchart) */
-  .fc-box{fill:#232323;stroke:rgba(255,255,255,.18)}
-  .fc-start{fill:rgba(249,2,11,.16);stroke:var(--red)}
+  .fc-box{fill:#261818;stroke:rgba(242,232,217,.18)}
+  .fc-start{fill:rgba(255,59,48,.16);stroke:var(--red)}
   .fc-dec{fill:rgba(240,180,41,.12);stroke:var(--warn)}
   .fc-br{fill:rgba(255,90,82,.10);stroke:rgba(255,90,82,.5)}
-  .fc-t{fill:#fff;font-size:11.5px}
+  .fc-t{fill:#f2e8d9;font-size:11.5px}
   .fc-c{text-anchor:middle}
   .fc-line{stroke:var(--red);stroke-width:1.6;fill:none}
   .fc-lbl{fill:var(--red2);font-size:10px;font-weight:700}
   svg text{font-family:inherit}
   .bsc{display:flex;flex-direction:column;gap:8px}
-  .bsc-row{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--c,#888);border-radius:12px;padding:12px 16px}
-  .bsc-h{font-weight:700;font-size:14px;margin-bottom:6px;color:var(--c,#fff)}
-  .bsc-row ul{margin:0;padding-left:18px;font-size:12.5px;color:rgba(255,255,255,.80);line-height:1.55}
+  .bsc-row{background:var(--panel);border:1px solid color-mix(in srgb,var(--c,#888) 45%,transparent);border-radius:12px;padding:12px 16px}
+  .bsc-h{font-weight:700;font-size:14px;margin-bottom:6px;color:var(--c,#f2e8d9)}
+  .bsc-row ul{margin:0;padding-left:18px;font-size:12.5px;color:rgba(242,232,217,.80);line-height:1.55}
   .val{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:13px 15px}
   .val b{color:var(--red2);font-size:13px}
   .val p{color:var(--mut);font-size:12px;margin-top:4px;line-height:1.45}
   /* Mapa estratégico (diagrama) */
   .sm-node{stroke-width:1.6}
-  .sm-t{fill:#fff;font-size:10px}
+  .sm-t{fill:#f2e8d9;font-size:10px}
   .sm-lbl{font-size:11px;font-weight:800;letter-spacing:.5px}
-  .sm-line{stroke:#F9020B;stroke-width:1.8;fill:none}
+  .sm-line{stroke:#FF3B30;stroke-width:1.8;fill:none}
   /* Proyectos */
-  .proj{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--c,var(--red));border-radius:14px;padding:14px 16px}
+  .proj{background:var(--panel);border:1px solid color-mix(in srgb,var(--c,var(--red2)) 40%,transparent);border-radius:14px;padding:14px 16px}
   .proj h4{font-size:14.5px;margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-  .proj .pdesc{font-size:12.5px;color:rgba(255,255,255,.84);line-height:1.5}
+  .proj .pdesc{font-size:12.5px;color:rgba(242,232,217,.84);line-height:1.5}
   .proj .pinfo{font-size:11.5px;color:var(--mut);margin-top:8px;line-height:1.45}
-  .proj .pinfo b{color:rgba(255,255,255,.7)}
+  .proj .pinfo b{color:rgba(242,232,217,.7)}
   .projgrid{display:grid;gap:13px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
   .grouplbl{font-size:13px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.8px;margin:22px 0 11px}
   /* Mapa mental */
   .mm-title{font-size:11px;font-weight:800;letter-spacing:.4px}
-  .mm-item{fill:rgba(255,255,255,.9);font-size:10.5px}
+  .mm-item{fill:rgba(242,232,217,.9);font-size:10.5px}
   .mm-edge{stroke-width:1.8;fill:none}
   .mm-elbl{font-size:9.5px;font-weight:700}
   /* Buyer persona */
@@ -155,26 +159,26 @@
   .pers-h{display:flex;align-items:center;gap:12px}
   .pers-av{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:25px;background:var(--panel2);border:2px solid var(--c,#666);flex:0 0 auto}
   .pers-h .nm{font-size:16px;font-weight:800;line-height:1.1}
-  .pers-h .arq{font-size:10.5px;color:var(--c,#fff);font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+  .pers-h .arq{font-size:10.5px;color:var(--c,#f2e8d9);font-weight:700;text-transform:uppercase;letter-spacing:.5px}
   .pers-meta{font-size:12px;color:var(--mut);line-height:1.4}
-  .pers-q{font-style:italic;font-size:12.5px;color:#fff;background:rgba(255,255,255,.04);border-left:3px solid var(--c,var(--red));border-radius:8px;padding:8px 11px}
+  .pers-q{font-style:italic;font-size:12.5px;color:var(--txt);background:rgba(242,232,217,.04);border:1px solid color-mix(in srgb,var(--c,var(--red2)) 35%,transparent);border-radius:8px;padding:8px 11px}
   .pblock{font-size:12px}
   .pblock .pl{display:block;font-size:9.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--mut);margin-bottom:3px;font-weight:700}
-  .pblock ul{margin:0;padding-left:16px;line-height:1.5;color:rgba(255,255,255,.85)}
+  .pblock ul{margin:0;padding-left:16px;line-height:1.5;color:rgba(242,232,217,.85)}
   .ptags{display:flex;gap:5px;flex-wrap:wrap}
-  .ptag{font-size:10.5px;background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:2px 8px;color:rgba(255,255,255,.82)}
-  .pers .pwin{font-size:11.5px;background:rgba(249,2,11,.08);border:1px solid rgba(249,2,11,.28);border-radius:9px;padding:8px 10px;color:#ffd2cf}
+  .ptag{font-size:10.5px;background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:2px 8px;color:rgba(242,232,217,.82)}
+  .pers .pwin{font-size:11.5px;background:rgba(255,59,48,.08);border:1px solid rgba(255,59,48,.28);border-radius:9px;padding:8px 10px;color:#ffd2cf}
   .pers .pwin b{color:var(--red2)}
 
   /* Service Blueprint */
   .bp-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
   table.bp{border-collapse:collapse;min-width:1040px;font-size:11.5px;width:100%}
   table.bp th,table.bp td{border:1px solid var(--line);padding:8px 9px;vertical-align:top;width:130px;line-height:1.35}
-  table.bp th{background:var(--panel2);color:#fff;text-align:left;font-size:11.5px;font-weight:700}
+  table.bp th{background:var(--panel2);color:#f2e8d9;text-align:left;font-size:11.5px;font-weight:700}
   table.bp .lane{background:var(--panel2);font-weight:700;font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:.4px;width:128px;min-width:128px}
-  table.bp td.cli{color:#fff}
-  table.bp tr.sep td{background:#141414;color:var(--mut);font-size:9.5px;text-transform:uppercase;letter-spacing:1px;text-align:center;padding:3px;border-style:dashed}
-  table.bp tr.auto-row td{background:rgba(249,2,11,.09);color:#ffd2cf}
+  table.bp td.cli{color:#f2e8d9}
+  table.bp tr.sep td{background:#0e0808;color:var(--mut);font-size:9.5px;text-transform:uppercase;letter-spacing:1px;text-align:center;padding:3px;border-style:dashed}
+  table.bp tr.auto-row td{background:rgba(255,59,48,.09);color:#ffd2cf}
   table.bp tr.auto-row .lane{color:var(--red2)}
 
   /* Mapa de sistemas */
@@ -184,20 +188,23 @@
   .chip{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:7px 11px;font-size:12px;min-width:96px}
   .chip b{display:block;font-size:12.5px}
   .chip span{color:var(--mut);font-size:10px}
-  .chip.core{border-color:rgba(249,2,11,.45);background:linear-gradient(180deg,rgba(249,2,11,.08),var(--panel2))}
+  .chip.core{border-color:rgba(255,59,48,.45);background:linear-gradient(180deg,rgba(255,59,48,.08),var(--panel2))}
   .chip.ia{border-color:rgba(43,191,122,.4)}
   .sysgap{background:rgba(255,90,82,.10);border:1px solid rgba(255,90,82,.4);border-radius:11px;padding:11px 14px;font-size:12.5px;color:#ffd2cf;margin:8px 0}
   .sysarrow{text-align:center;color:var(--red);font-size:17px;line-height:1;margin:1px 0}
 
   /* Plan 30-60-90 */
-  .daypill{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:var(--red);border-radius:999px;padding:3px 11px;margin-bottom:8px}
-  .plan-card ul{margin:6px 0 0;padding-left:17px;font-size:12.5px;color:rgba(255,255,255,.82);line-height:1.6}
+  .daypill{display:inline-block;font-size:11px;font-weight:800;color:#f2e8d9;background:var(--red);border-radius:999px;padding:3px 11px;margin-bottom:8px}
+  .plan-card ul{margin:6px 0 0;padding-left:17px;font-size:12.5px;color:rgba(242,232,217,.82);line-height:1.6}
+  /* Laser progress bar */
+  #laserbar{position:fixed;top:0;left:0;height:2px;width:0;background:#FF3B30;box-shadow:0 0 12px rgba(255,59,48,.8);z-index:100;pointer-events:none;transition:width .15s var(--ease)}
 </style>
 </head>
 <body>
 
 
 <div class="bgwrap"></div>
+<div id="laserbar"></div>
 <a class="langtoggle" style="left:16px;right:auto" href="https://sebastianjcv97.github.io/c4v-hq/" title="Volver al portal C4V HQ">&larr; HQ</a>
 <a class="langtoggle" id="langtoggle" data-other="index.html" href="index.html" title="Cambiar a español / Switch to Spanish">🌐 ES</a>
 
@@ -344,7 +351,7 @@
     </div>
 
     <h3 style="margin:24px 0 6px;font-size:16px">Strategy map — Balanced Scorecard</h3>
-    <p class="muted" style="margin-bottom:11px">Cause-and-effect diagram: read it <b>from the bottom up</b> &#8593;. Each learning objective enables a process one, which improves the customer experience, which generates the financial result. <span style="color:rgba(255,255,255,.45)">(Replica of your map, with color by perspective.)</span></p>
+    <p class="muted" style="margin-bottom:11px">Cause-and-effect diagram: read it <b>from the bottom up</b> &#8593;. Each learning objective enables a process one, which improves the customer experience, which generates the financial result. <span style="color:rgba(242,232,217,.45)">(Replica of your map, with color by perspective.)</span></p>
     <div class="card" style="overflow-x:auto;margin-bottom:18px"><div id="smap" style="min-width:760px"></div></div>
 
     <h3 style="margin:24px 0 6px;font-size:16px">In detail — what each perspective seeks</h3>
@@ -404,7 +411,7 @@
 
     <div class="branch-title">Technology / IT — new area</div>
     <div class="teamrow">
-      <div class="mini" style="border-color:rgba(249,2,11,.5);min-width:200px"><b>Martin Velasco</b><span>Technology Manager · AI and automation · alone for now</span></div>
+      <div class="mini" style="border-color:rgba(255,59,48,.5);min-width:200px"><b>Martin Velasco</b><span>Technology Manager · AI and automation · alone for now</span></div>
     </div>
 
     <div class="branch-title">External</div>
@@ -709,7 +716,7 @@
         </ul>
       </div>
       <div class="card plan-card">
-        <span class="daypill" style="background:var(--warn);color:#1a1a1a">30 – 60 days</span>
+        <span class="daypill" style="background:var(--warn);color:#140d0d">30 – 60 days</span>
         <h3>Tackle pain #1</h3>
         <ul>
           <li>Build and launch the <b>Support Coordinator</b>.</li>
@@ -758,8 +765,8 @@
     svg += `<polyline points="${pts}" fill="none" stroke="var(--red)" stroke-width="3" stroke-linejoin="round"/>`;
     stages.forEach((s,i)=>{
       svg += `<circle cx="${x(i).toFixed(0)}" cy="${y(s.avg).toFixed(0)}" r="5" fill="var(--red2)"/>`;
-      svg += `<text x="${x(i).toFixed(0)}" y="${(y(s.avg)-12).toFixed(0)}" fill="#fff" font-size="12" text-anchor="middle">+${s.avg.toFixed(1)}</text>`;
-      svg += `<text x="${x(i).toFixed(0)}" y="${H+16}" fill="rgba(255,255,255,.6)" font-size="11" text-anchor="middle">${esc(s.name).slice(0,16)}</text>`;
+      svg += `<text x="${x(i).toFixed(0)}" y="${(y(s.avg)-12).toFixed(0)}" fill="#f2e8d9" font-size="12" text-anchor="middle">+${s.avg.toFixed(1)}</text>`;
+      svg += `<text x="${x(i).toFixed(0)}" y="${H+16}" fill="rgba(242,232,217,.6)" font-size="11" text-anchor="middle">${esc(s.name).slice(0,16)}</text>`;
     });
     svg += `</svg>`;
     document.getElementById('jcurve').innerHTML = '<h3>Emotional curve — average experience level per stage (up = better)</h3>'+svg;
@@ -800,7 +807,7 @@
     let pts=nv.map((v,i)=>`${x(i).toFixed(0)},${y(v).toFixed(0)}`).join(' ');
     let svg=`<svg width="${W}" height="${H}" style="display:block">`;
     svg+=`<polyline points="${pts}" fill="none" stroke="var(--red)" stroke-width="2.5" stroke-linejoin="round"/>`;
-    nv.forEach((v,i)=>{ svg+=`<circle cx="${x(i).toFixed(0)}" cy="${y(v).toFixed(0)}" r="4" fill="var(--red2)"/><text x="${x(i).toFixed(0)}" y="${(y(v)-8).toFixed(0)}" fill="#fff" font-size="10" text-anchor="middle">+${v}</text>`; });
+    nv.forEach((v,i)=>{ svg+=`<circle cx="${x(i).toFixed(0)}" cy="${y(v).toFixed(0)}" r="4" fill="var(--red2)"/><text x="${x(i).toFixed(0)}" y="${(y(v)-8).toFixed(0)}" fill="#f2e8d9" font-size="10" text-anchor="middle">+${v}</text>`; });
     svg+=`</svg>`;
     let cols='';
     rows.forEach(r=>{
@@ -939,11 +946,11 @@
         parts.push(`<rect class="${se?'fc-start':'fc-box'}" x="${bx}" y="${y}" width="${bw}" height="${h}" rx="${se?22:10}"/>`);
         parts.push(`<rect x="${bx}" y="${y}" width="6" height="${h}" rx="3" fill="${col}"/>`);
         parts.push(`<text class="fc-t fc-c" x="${cx}" y="${(y+(nd.sub?21:27)).toFixed(0)}">${nd.x}</text>`);
-        if(nd.sub) parts.push(`<text class="fc-c" x="${cx}" y="${y+38}" style="fill:rgba(255,255,255,.6);font-size:10px">${nd.sub}</text>`);
+        if(nd.sub) parts.push(`<text class="fc-c" x="${cx}" y="${y+38}" style="fill:rgba(242,232,217,.6);font-size:10px">${nd.sub}</text>`);
       }
       prevBottom=topY+h; y=prevBottom+30;
     });
-    const svg=`<svg viewBox="0 0 ${Wsvg} ${y}" width="100%" style="max-width:660px"><defs><marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#F9020B"/></marker></defs>${parts.join('')}</svg>`;
+    const svg=`<svg viewBox="0 0 ${Wsvg} ${y}" width="100%" style="max-width:660px"><defs><marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#FF3B30"/></marker></defs>${parts.join('')}</svg>`;
     const legend=`<div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:12px;font-size:12px">`+
       used.map(a=>`<span style="display:flex;align-items:center;gap:6px"><span style="width:13px;height:13px;border-radius:3px;background:${AREAS[a]};display:inline-block"></span>${a}</span>`).join('')+`</div>`;
     document.getElementById('flowchart').innerHTML=legend+svg;
@@ -1011,24 +1018,24 @@
     let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:700px;display:block">`;
     s+=`<rect x="${pad}" y="${iTop}" width="${mx-pad}" height="${my-iTop}" fill="rgba(43,191,122,.09)"/>`;
     s+=`<rect x="${mx}" y="${iTop}" width="${W-pad-mx}" height="${my-iTop}" fill="rgba(240,180,41,.07)"/>`;
-    s+=`<rect x="${pad}" y="${my}" width="${mx-pad}" height="${iBot-my}" fill="rgba(255,255,255,.025)"/>`;
+    s+=`<rect x="${pad}" y="${my}" width="${mx-pad}" height="${iBot-my}" fill="rgba(242,232,217,.025)"/>`;
     s+=`<rect x="${mx}" y="${my}" width="${W-pad-mx}" height="${iBot-my}" fill="rgba(255,90,82,.05)"/>`;
     s+=`<text x="${pad+8}" y="${iTop-7}" fill="#2bbf7a" font-size="10.5" font-weight="700">QUICK WINS</text>`;
     s+=`<text x="${W-pad-8}" y="${iTop-7}" fill="#f0b429" font-size="10.5" font-weight="700" text-anchor="end">BIG PROJECTS</text>`;
-    s+=`<text x="${pad+8}" y="${iBot+15}" fill="rgba(255,255,255,.4)" font-size="10">fill-ins</text>`;
+    s+=`<text x="${pad+8}" y="${iBot+15}" fill="rgba(242,232,217,.4)" font-size="10">fill-ins</text>`;
     s+=`<text x="${W-pad-8}" y="${iBot+15}" fill="rgba(255,90,82,.6)" font-size="10" text-anchor="end">avoid / last</text>`;
-    s+=`<line x1="${mx}" y1="${iTop}" x2="${mx}" y2="${iBot}" stroke="rgba(255,255,255,.18)" stroke-dasharray="4 4"/>`;
-    s+=`<line x1="${pad}" y1="${my}" x2="${W-pad}" y2="${my}" stroke="rgba(255,255,255,.18)" stroke-dasharray="4 4"/>`;
-    s+=`<line x1="${pad}" y1="${iTop}" x2="${pad}" y2="${iBot}" stroke="rgba(255,255,255,.35)"/>`;
-    s+=`<line x1="${pad}" y1="${iBot}" x2="${W-pad}" y2="${iBot}" stroke="rgba(255,255,255,.35)"/>`;
-    s+=`<text x="${W/2}" y="${H-12}" fill="rgba(255,255,255,.6)" font-size="11" text-anchor="middle">Effort / complexity →</text>`;
-    s+=`<text x="16" y="${(iTop+iBot)/2}" fill="rgba(255,255,255,.6)" font-size="11" text-anchor="middle" transform="rotate(-90 16 ${(iTop+iBot)/2})">Impact →</text>`;
+    s+=`<line x1="${mx}" y1="${iTop}" x2="${mx}" y2="${iBot}" stroke="rgba(242,232,217,.18)" stroke-dasharray="4 4"/>`;
+    s+=`<line x1="${pad}" y1="${my}" x2="${W-pad}" y2="${my}" stroke="rgba(242,232,217,.18)" stroke-dasharray="4 4"/>`;
+    s+=`<line x1="${pad}" y1="${iTop}" x2="${pad}" y2="${iBot}" stroke="rgba(242,232,217,.35)"/>`;
+    s+=`<line x1="${pad}" y1="${iBot}" x2="${W-pad}" y2="${iBot}" stroke="rgba(242,232,217,.35)"/>`;
+    s+=`<text x="${W/2}" y="${H-12}" fill="rgba(242,232,217,.6)" font-size="11" text-anchor="middle">Effort / complexity →</text>`;
+    s+=`<text x="16" y="${(iTop+iBot)/2}" fill="rgba(242,232,217,.6)" font-size="11" text-anchor="middle" transform="rotate(-90 16 ${(iTop+iBot)/2})">Impact →</text>`;
     MTX.forEach(d=>{
       const x=px(d.e), y=py(d.i);
       s+=`<circle cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${d.r}" fill="${d.c}" fill-opacity="0.30" stroke="${d.c}" stroke-width="1.6"/>`;
       const ly=y+d.r+11, w=d.n.length*5.2+10;
-      s+=`<rect x="${(x-w/2).toFixed(0)}" y="${(ly-9).toFixed(0)}" width="${w.toFixed(0)}" height="14" rx="3" fill="#161616"/>`;
-      s+=`<text x="${x.toFixed(0)}" y="${(ly+1.5).toFixed(0)}" fill="#fff" font-size="9.7" font-weight="600" text-anchor="middle">${esc(d.n)}</text>`;
+      s+=`<rect x="${(x-w/2).toFixed(0)}" y="${(ly-9).toFixed(0)}" width="${w.toFixed(0)}" height="14" rx="3" fill="#1c1111"/>`;
+      s+=`<text x="${x.toFixed(0)}" y="${(ly+1.5).toFixed(0)}" fill="#f2e8d9" font-size="9.7" font-weight="600" text-anchor="middle">${esc(d.n)}</text>`;
     });
     s+=`</svg>`;
     el.innerHTML=s;
@@ -1062,16 +1069,16 @@
     };
     const E=[["A1","P1"],["A2","P2"],["A3","P3"],["P1","C1"],["P2","C2"],["P3","C2"],["C1","F1"],["C2","F2"]];
     let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:900px;display:block">`+
-      `<defs><marker id="smah" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#F9020B"/></marker></defs>`;
+      `<defs><marker id="smah" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#FF3B30"/></marker></defs>`;
     P.forEach((p,i)=>{
       s+=`<rect x="8" y="${p.y-62}" width="${W-16}" height="124" rx="10" fill="${p.c}" fill-opacity="0.07"/>`;
       s+=`<text class="sm-lbl" x="18" y="${p.y-30}" fill="${p.c}">${esc(p.k)}</text>`;
-      if(i<P.length-1){ const sy=(p.y+P[i+1].y)/2; s+=`<line x1="8" y1="${sy}" x2="${W-8}" y2="${sy}" stroke="rgba(255,255,255,.14)" stroke-dasharray="6 6"/>`; }
+      if(i<P.length-1){ const sy=(p.y+P[i+1].y)/2; s+=`<line x1="8" y1="${sy}" x2="${W-8}" y2="${sy}" stroke="rgba(242,232,217,.14)" stroke-dasharray="6 6"/>`; }
     });
     E.forEach(([a,b])=>{ const o=N[a],t=N[b];
       s+=`<line class="sm-line" x1="${o.x}" y1="${(o.y-bh/2-1).toFixed(0)}" x2="${t.x}" y2="${(t.y+bh/2+1).toFixed(0)}" marker-end="url(#smah)"/>`; });
     Object.values(N).forEach(n=>{ const c=P[n.p].c, x=n.x-bw/2, y=n.y-bh/2;
-      s+=`<rect class="sm-node" x="${x}" y="${y}" width="${bw}" height="${bh}" rx="12" fill="#202020" stroke="${c}"/>`;
+      s+=`<rect class="sm-node" x="${x}" y="${y}" width="${bw}" height="${bh}" rx="12" fill="#221414" stroke="${c}"/>`;
       const ls=smWrap(n.t,26), startY=n.y-(ls.length-1)*6;
       ls.forEach((ln,i)=> s+=`<text class="sm-t" x="${n.x}" y="${(startY+i*12+3).toFixed(0)}" text-anchor="middle">${esc(ln)}</text>`);
     });
@@ -1088,7 +1095,7 @@
       {t:"CHANNELS",color:"#3aa0ff",x:24,y:70,w:200,h:176,items:["WhatsApp","Instagram","TikTok","Facebook"]},
       {t:"CAPTURE",color:"#3aa0ff",x:272,y:120,w:158,h:78,items:["ManyChat","(lead bot)"]},
       {t:"TRAINING",color:"#79c0ff",x:470,y:36,w:214,h:84,items:["C4V School","WordPress + Tutor LMS"]},
-      {t:"ERP / CORE",color:"#F9020B",x:470,y:160,w:220,h:140,items:["Odoo 19 Enterprise","CRM · Sales · Helpdesk","Planning · Inventory · Accounting","erp.c4vlaser.com"]},
+      {t:"ERP / CORE",color:"#FF3B30",x:470,y:160,w:220,h:140,items:["Odoo 19 Enterprise","CRM · Sales · Helpdesk","Planning · Inventory · Accounting","erp.c4vlaser.com"]},
       {t:"AI / AGENTS",color:"#2bbf7a",x:730,y:36,w:312,h:300,items:["Claude Code (11 bots)","MCP Odoo · Chrome/CDP","Gemini API (Jim)","CeVi web (demo)","CeVi backend (FastAPI)","Anthropic API (Claude Haiku)","Edge TTS (Dalia voice)","Toby (anti-fraud → bank)","Ollama local (Qwen) · Mei"]},
       {t:"INFRASTRUCTURE / AUTOMATION",color:"#a78bfa",x:272,y:330,w:380,h:176,items:["Railway (hosting · auto-deploy)","n8n (workflows + dashboards)","PostgreSQL (bots' memory)","GitHub (repos + Pages)","NAS QNAP (files)"]},
       {t:"INTERNAL COMMS",color:"#E0B978",x:730,y:406,w:312,h:100,items:["Discord (management / marketing)","WhatsApp (groups by area & client)"]},
@@ -1096,7 +1103,7 @@
     ];
     const ED=[
       {x1:224,y1:159,x2:272,y2:159,l:"capture",c:"#3aa0ff"},
-      {x1:430,y1:172,x2:500,y2:188,l:"⚠ MANUAL",c:"#F9020B",d:1,lx:452,ly:150},
+      {x1:430,y1:172,x2:500,y2:188,l:"⚠ MANUAL",c:"#FF3B30",d:1,lx:452,ly:150},
       {x1:730,y1:230,x2:692,y2:230,l:"MCP · XML-RPC",c:"#2bbf7a"},
       {x1:886,y1:336,x2:886,y2:406,l:"webhooks",c:"#E0B978"},
       {x1:730,y1:320,x2:656,y2:360,l:"hosting · memory",c:"#a78bfa"},
@@ -1104,14 +1111,14 @@
       {x1:224,y1:320,x2:472,y2:270,l:"purchases (manual)",c:"#ff8f6b",d:1},
       {x1:577,y1:120,x2:577,y2:160,l:"customers (manual)",c:"#79c0ff",d:1}
     ];
-    const pal=["#3aa0ff","#F9020B","#2bbf7a","#E0B978","#a78bfa","#ff8f6b","#79c0ff"];
+    const pal=["#3aa0ff","#FF3B30","#2bbf7a","#E0B978","#a78bfa","#ff8f6b","#79c0ff"];
     const mk=c=>'mm'+c.replace('#','');
     let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:1060px;display:block"><defs>`+
       pal.map(c=>`<marker id="${mk(c)}" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="${c}"/></marker>`).join('')+`</defs>`;
     ED.forEach(e=>{
       s+=`<line class="mm-edge" x1="${e.x1}" y1="${e.y1}" x2="${e.x2}" y2="${e.y2}" stroke="${e.c}" ${e.d?'stroke-dasharray="5 4"':''} marker-end="url(#${mk(e.c)})"/>`;
       const lx=e.lx!=null?e.lx:(e.x1+e.x2)/2, ly=e.ly!=null?e.ly:(e.y1+e.y2)/2, w=e.l.length*5.4+10;
-      s+=`<rect x="${(lx-w/2).toFixed(0)}" y="${(ly-9).toFixed(0)}" width="${w.toFixed(0)}" height="15" rx="4" fill="#161616" stroke="${e.c}" stroke-opacity="0.45"/>`;
+      s+=`<rect x="${(lx-w/2).toFixed(0)}" y="${(ly-9).toFixed(0)}" width="${w.toFixed(0)}" height="15" rx="4" fill="#1c1111" stroke="${e.c}" stroke-opacity="0.45"/>`;
       s+=`<text class="mm-elbl" x="${lx.toFixed(0)}" y="${(ly+2).toFixed(0)}" fill="${e.c}" text-anchor="middle">${esc(e.l)}</text>`;
     });
     CL.forEach(g=>{
@@ -1139,6 +1146,12 @@
     if(h && document.getElementById(h) && document.querySelector('nav button[data-s="'+h+'"]')){ _setTab(h); }
     else { var lt=document.getElementById('langtoggle'); if(lt && lt.dataset.other) lt.href = lt.dataset.other + '#resumen'; }
   })();
+</script>
+<script>
+(function(){var bar=document.getElementById('laserbar');if(!bar)return;
+function u(){var d=document.documentElement,m=d.scrollHeight-d.clientHeight,t=window.pageYOffset||d.scrollTop||0;bar.style.width=(m>0?Math.min(100,t/m*100):0)+'%';}
+window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();setInterval(u,800);
+})();
 </script>
 </body>
 </html>
